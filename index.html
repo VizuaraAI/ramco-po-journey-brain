@@ -445,6 +445,168 @@
     color: var(--ink);
   }
 
+  /* Clickable hbox layer */
+  .hbox-clickable {
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    position: relative;
+  }
+  .hbox-clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(22, 22, 19, 0.10);
+  }
+  .hbox-click-chip {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: rgba(197, 168, 240, 0.65);
+    color: var(--purple-deep);
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .hbox.h1 .hbox-click-chip { background: rgba(255, 255, 255, 0.22); color: var(--purple); }
+
+  /* Modal content variants */
+  .modal-intro {
+    font-size: 13px; color: var(--muted); line-height: 1.6;
+    margin-bottom: 18px; padding: 12px 16px;
+    background: var(--cream-light); border-radius: 10px;
+  }
+  .modal-jgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .modal-jcard {
+    background: var(--white); border: 1px solid var(--border-soft);
+    border-radius: 12px; padding: 14px 16px;
+    display: flex; flex-direction: column;
+  }
+  .modal-jcard.built { border: 2px solid var(--purple-mid); box-shadow: 0 2px 10px rgba(92, 58, 150, 0.08); }
+  .modal-jcard .jcard-bucket {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--purple-deep); font-weight: 600; font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .modal-jcard .jcard-name {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 16px; margin-bottom: 2px; letter-spacing: -0.005em; color: var(--ink);
+  }
+  .modal-jcard .jcard-activity {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); margin-bottom: 10px;
+  }
+  .modal-jcard .jcard-desc { font-size: 12px; color: var(--ink-2); line-height: 1.55; flex: 1; }
+  .modal-jcard .jcard-badge {
+    margin-top: 10px;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 100px; display: inline-block; width: fit-content;
+    background: var(--cream-light); color: var(--muted);
+  }
+  .modal-jcard.built .jcard-badge { background: rgba(182, 201, 148, 0.45); color: #3d5c25; }
+
+  .modal-step-timeline { display: flex; flex-direction: column; gap: 10px; }
+  .modal-step-card {
+    display: grid; grid-template-columns: 50px 1fr; gap: 18px;
+    padding: 14px 18px;
+    background: var(--white); border: 1px solid var(--border-soft); border-radius: 12px;
+    align-items: flex-start;
+  }
+  .modal-step-num {
+    width: 40px; height: 40px;
+    background: rgba(197, 168, 240, 0.22); color: var(--purple-deep);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px;
+  }
+  .modal-step-content .step-name {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px;
+    margin-bottom: 4px; letter-spacing: -0.005em; color: var(--ink);
+  }
+  .modal-step-content .step-business {
+    font-size: 13px; color: var(--ink-2); margin-bottom: 8px; line-height: 1.55;
+  }
+  .modal-step-content .step-quote {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 13px;
+    color: var(--green); border-left: 3px solid var(--green); padding-left: 10px;
+    margin-bottom: 8px;
+  }
+  .modal-step-content .step-counts {
+    display: flex; gap: 14px; font-size: 11px; color: var(--muted);
+  }
+  .modal-step-content .step-counts b { color: var(--ink); font-weight: 600; }
+
+  .modal-section-title {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--purple-deep); font-weight: 600; font-family: 'JetBrains Mono', monospace;
+    margin: 18px 0 10px;
+  }
+  .modal-section-title:first-of-type { margin-top: 0; }
+  .modal-slots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .modal-slot-pill {
+    background: var(--white); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 10px 12px;
+  }
+  .modal-slot-pill .name {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--ink); font-weight: 600; margin-bottom: 4px;
+  }
+  .modal-slot-pill .meta { font-size: 10px; color: var(--muted); line-height: 1.5; }
+  .modal-slot-pill .ctag {
+    display: inline-block; padding: 1px 7px; border-radius: 8px;
+    font-size: 9px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; margin-right: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .ctag.required     { background: rgba(182, 201, 148, 0.45); color: #3d5c25; }
+  .ctag.optional     { background: rgba(213, 209, 196, 0.6);  color: var(--muted); }
+  .ctag.conditional  { background: rgba(197, 168, 240, 0.3);  color: var(--purple-deep); }
+  .ctag.defaultable  { background: rgba(176, 200, 224, 0.4);  color: #2a4a6e; }
+  .ctag.system_derived { background: rgba(240, 200, 150, 0.4); color: #8b6020; }
+  .ctag.transient    { background: rgba(236, 184, 184, 0.4);  color: #8b4040; }
+  .ctag.optional_compound { background: rgba(213, 209, 196, 0.6); color: var(--muted); }
+
+  .modal-splice-card {
+    background: rgba(197, 168, 240, 0.06);
+    border: 1px solid rgba(197, 168, 240, 0.25);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+  }
+  .modal-splice-card .name {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--purple-deep); font-weight: 600; margin-bottom: 4px;
+  }
+  .modal-splice-card .trigger {
+    font-size: 11px; color: var(--muted); margin-bottom: 4px;
+  }
+  .modal-splice-card .trigger code {
+    background: white; padding: 1px 5px; border-radius: 3px;
+    color: var(--ink); font-size: 10px; font-family: 'JetBrains Mono', monospace;
+  }
+  .modal-splice-card .effect {
+    background: var(--white); padding: 8px 10px; border-radius: 6px;
+    font-size: 12px; color: var(--ink-2); line-height: 1.5; margin-top: 6px;
+  }
+  .modal-splice-card .activates {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; align-items: center;
+  }
+  .modal-splice-card .activates::before {
+    content: "→ activates";
+    font-size: 10px; color: var(--muted-2);
+    margin-right: 4px; font-family: 'JetBrains Mono', monospace;
+  }
+  .modal-splice-card .activates .pill {
+    background: rgba(182, 201, 148, 0.35); color: #3d5c25;
+    padding: 2px 8px; border-radius: 100px; font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  @media (max-width: 900px) {
+    .modal-jgrid, .modal-slots-grid { grid-template-columns: 1fr 1fr; }
+  }
+
   /* Hierarchy figure */
   .hierarchy-diagram {
     background: var(--white);
@@ -1446,7 +1608,8 @@
 
     <div class="hierarchy-diagram">
       <div class="hlayer">
-        <div class="hbox h1">
+        <div class="hbox h1 hbox-clickable" data-layer="graph">
+          <span class="hbox-click-chip">Click →</span>
           <div class="hicon">◇  THE DOMAIN</div>
           <div class="hlabel">PO Knowledge Graph</div>
           <div class="hmeta">1 graph · 154 nodes · 554 edges</div>
@@ -1454,7 +1617,8 @@
       </div>
       <div class="harrow">routes user's first message to one of ↓</div>
       <div class="hlayer">
-        <div class="hbox h2">
+        <div class="hbox h2 hbox-clickable" data-layer="journeys">
+          <span class="hbox-click-chip">Click →</span>
           <div class="hicon">◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯</div>
           <div class="hlabel">13 Master Journeys</div>
           <div class="hmeta">entry-point disjoint · Create, Edit, Amend, Approve, Short Close, View…</div>
@@ -1462,7 +1626,8 @@
       </div>
       <div class="harrow">each journey contains ↓</div>
       <div class="hlayer">
-        <div class="hbox h3">
+        <div class="hbox h3 hbox-clickable" data-layer="steps">
+          <span class="hbox-click-chip">Click →</span>
           <div class="hicon">━━━━━━━━━━━━━━</div>
           <div class="hlabel">Business Steps</div>
           <div class="hmeta">~7 ordered steps per journey · the conversation flow</div>
@@ -1470,12 +1635,14 @@
       </div>
       <div class="harrow">each step contains ↓</div>
       <div class="hlayer">
-        <div class="hbox h4-slot">
+        <div class="hbox h4-slot hbox-clickable" data-layer="slots">
+          <span class="hbox-click-chip">Click →</span>
           <div class="hicon">◊  INPUTS</div>
           <div class="hlabel">Slots</div>
           <div class="hmeta">49 reusable · the inputs the chat collects from the user</div>
         </div>
-        <div class="hbox h4-splice">
+        <div class="hbox h4-splice hbox-clickable" data-layer="splices">
+          <span class="hbox-click-chip">Click →</span>
           <div class="hicon">▲  LOGIC</div>
           <div class="hlabel">Splices</div>
           <div class="hmeta">27 conditional rules · the if-then logic that branches the flow</div>
@@ -1847,17 +2014,18 @@
   </div>
 </footer>
 
-<!-- MASTER GRAPH MODAL -->
+<!-- LAYER MODAL (graph / journeys / steps / slots / splices) -->
 <div class="modal-overlay" id="master-modal">
   <div class="modal-card">
     <div class="modal-header">
       <div>
-        <h3>PO Master Graph</h3>
-        <span class="modal-sub">all 13 journeys · 5 key statuses · produces / acts_on / transitions edges</span>
+        <h3 id="modal-title">PO Master Graph</h3>
+        <span class="modal-sub" id="modal-sub">all 13 journeys · 5 key statuses · produces / acts_on / transitions edges</span>
       </div>
       <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" id="modal-body">
+      <div id="modal-graph-view">
       <div class="modal-svg-wrap">
         <svg class="modal-svg" viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -2016,6 +2184,8 @@
         <strong style="font-family: 'Fraunces', serif; font-weight: 600; color: var(--ink); display: block; margin-bottom: 6px;">How to read this graph</strong>
         <b>Solid arrows</b> = journey acts on a status, or transitions one status to another (e.g. Approve PO transitions Draft → Authorized). <b>Dashed arrows</b> = optional / universal connections (View PO reads any status; Amend's re-approval loop). <b>The starred Create Direct PO box</b> is the only journey fully built — clicking it on the main page drills into its 7 business steps, 49 slots, and 27 splices.
       </div>
+      </div><!-- /#modal-graph-view -->
+      <div id="modal-other-view" style="display:none;"></div>
     </div>
   </div>
 </div>
@@ -2407,10 +2577,17 @@ if (createDirectCard) {
   });
 }
 
-// Master graph modal — open / close / esc / click-outside
+// =========================================================================
+// LAYER MODAL — graph / journeys / steps / slots / splices
+// =========================================================================
 const masterModal = document.getElementById('master-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalSub = document.getElementById('modal-sub');
+const modalGraphView = document.getElementById('modal-graph-view');
+const modalOtherView = document.getElementById('modal-other-view');
 const openGraphBtn = document.getElementById('open-graph-btn');
 const modalCloseBtn = document.getElementById('modal-close-btn');
+
 function openMasterModal() {
   masterModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -2419,7 +2596,257 @@ function closeMasterModal() {
   masterModal.classList.remove('open');
   document.body.style.overflow = '';
 }
-if (openGraphBtn) openGraphBtn.addEventListener('click', openMasterModal);
+
+// --- Data: 13 Journeys ---
+const JOURNEYS_DATA = [
+  { id:'create_direct_po',         bucket:'CREATE',   built:true,  name:'Create Direct PO',          activity:'PoCrt · 3,140 rows',     desc:'A fresh PO without any external reference.' },
+  { id:'create_po_from_quotation', bucket:'CREATE',   built:false, name:'From Quotation',            activity:'PoCrtQtn · 32 rows',     desc:'Convert an existing supplier quote into a PO.' },
+  { id:'create_po_from_pr',        bucket:'CREATE',   built:false, name:'From Purchase Request',     activity:'PoCrt + coverage',       desc:'Turn an open Purchase Request into a PO.' },
+  { id:'create_po_from_so',        bucket:'CREATE',   built:false, name:'From Sale Order',           activity:'PoCrtSo · 29 rows',      desc:'Back-to-back PO to fulfill a sale order.' },
+  { id:'create_po_from_tender',    bucket:'CREATE',   built:false, name:'From Tender',               activity:'PoCrtTen · 21 rows',     desc:'Issue PO against an awarded tender.' },
+  { id:'copy_create_po',           bucket:'CREATE',   built:false, name:'Copy & Create',             activity:'PoCopy · 21 rows',       desc:'Clone an existing PO and tweak it.' },
+  { id:'edit_po',                  bucket:'MODIFY',   built:false, name:'Edit PO',                   activity:'PoEdt · 121 rows',       desc:'Correct any field on a draft PO before approval.' },
+  { id:'amend_po',                 bucket:'MODIFY',   built:false, name:'Amend PO',                  activity:'PoAmnd · 127 rows',      desc:'Formal amendment, often requires re-approval.' },
+  { id:'approve_po',               bucket:'ADVANCE',  built:false, name:'Approve PO',                activity:'PoApp · 112 rows',       desc:'Authorize the PO. Supplier can now act on it.' },
+  { id:'change_po_status',         bucket:'CLOSE',    built:false, name:'Change PO Status',          activity:'PoHold · 49 rows',       desc:'Hold, release, cancel, or terminate.' },
+  { id:'short_close_po',           bucket:'CLOSE',    built:false, name:'Short Close PO',            activity:'PoScl · 52 rows',        desc:'Close PO early, forgive remaining quantity.' },
+  { id:'view_po',                  bucket:'READ',     built:false, name:'View PO',                   activity:'PoViw · 178 rows',       desc:'Search and inspect; the universal entry point.' },
+  { id:'maintain_po_bulk',         bucket:'BULK',     built:false, name:'Maintain · bulk',           activity:'POMtn · 897 rows',       desc:'Power-user: bulk-update many POs at once.' }
+];
+
+// --- Data: 7 Steps (Create Direct PO) ---
+const STEPS_DATA = (typeof STEPS !== 'undefined') ? STEPS : [];
+
+// --- Data: 49 Slots (extended from SLOT_DETAIL) ---
+const SLOTS_BY_SCOPE = {
+  'header': [
+    { id:'po_type',           class:'required',    kind:'enum (GENERAL/CAPITAL/CONSIGNMENT/DROPSHIP)' },
+    { id:'supplier_code',     class:'required',    kind:'entity_reference' },
+    { id:'currency',          class:'required',    kind:'enum' },
+    { id:'exchange_rate',     class:'defaultable', kind:'number' },
+    { id:'po_date',           class:'required',    kind:'date' },
+    { id:'numbering_series',  class:'required',    kind:'enum' },
+    { id:'po_no_manual',      class:'conditional', kind:'string' },
+    { id:'ship_from_id',      class:'optional',    kind:'enum' },
+    { id:'buyer',             class:'optional',    kind:'entity_reference' },
+    { id:'folder',            class:'optional',    kind:'enum' },
+    { id:'classification',    class:'optional',    kind:'enum' },
+    { id:'sub_classification',class:'optional',    kind:'enum' },
+    { id:'remarks',           class:'optional',    kind:'string' },
+    { id:'imports_flag',      class:'optional',    kind:'boolean' },
+    { id:'loi_flag',          class:'optional',    kind:'boolean' },
+    { id:'hold_flag',         class:'optional',    kind:'boolean' },
+    { id:'supplier_tax_region',class:'optional',   kind:'enum' },
+    { id:'own_tax_region',    class:'optional',    kind:'enum' },
+    { id:'approval_date',     class:'system_derived', kind:'date' },
+    { id:'proposal_id',       class:'conditional', kind:'entity_reference · Capital only' }
+  ],
+  'line': [
+    { id:'item_code',         class:'required',    kind:'entity_reference' },
+    { id:'item_variant',      class:'optional',    kind:'string' },
+    { id:'adhoc_item_class',  class:'conditional', kind:'enum · when item not in master' },
+    { id:'quantity',          class:'required',    kind:'number' },
+    { id:'uom',               class:'required',    kind:'enum · defaults from item' },
+    { id:'cost',              class:'required',    kind:'number' },
+    { id:'per',               class:'required',    kind:'number · usually 1' },
+    { id:'need_date',         class:'required',    kind:'date' },
+    { id:'schedule_type',     class:'required',    kind:'enum (SINGLE/MULTIPLE)' },
+    { id:'receipt_at',        class:'required',    kind:'enum' },
+    { id:'warehouse_code',    class:'conditional', kind:'enum · stockable items only' },
+    { id:'accounting_unit',   class:'optional',    kind:'enum' },
+    { id:'ac_usage',          class:'conditional', kind:'enum · non-stockable only' },
+    { id:'cc_usage',          class:'conditional', kind:'enum · non-stockable only' },
+    { id:'budget_id_line',    class:'optional',    kind:'entity_reference' }
+  ],
+  'sub-flow': [
+    { id:'customer_code',     class:'conditional', kind:'entity_reference · Dropship only' },
+    { id:'dropship_id',       class:'conditional', kind:'entity_reference · Dropship only' },
+    { id:'budget_id',         class:'optional',    kind:'entity_reference' },
+    { id:'tcd_details',       class:'optional',    kind:'array · taxes/charges/discounts' },
+    { id:'schedule_details',  class:'conditional', kind:'array · MULTIPLE schedule only' },
+    { id:'quality_attributes',class:'optional',    kind:'array' },
+    { id:'pr_coverage',       class:'conditional', kind:'array' },
+    { id:'so_coverage',       class:'conditional', kind:'array' },
+    { id:'payment_terms',     class:'optional_compound', kind:'object · 27 fields, 5 asked' },
+    { id:'notes_text',        class:'optional',    kind:'string' },
+    { id:'consignment_rule',  class:'conditional', kind:'enum · Consignment only' },
+    { id:'import_tcd_codes',  class:'conditional', kind:'array · Imports flag only' }
+  ],
+  'system': [
+    { id:'po_number',         class:'system_derived', kind:'string · assigned on create' },
+    { id:'po_status',         class:'system_derived', kind:'enum · lifecycle state' }
+  ],
+  'transient': [
+    { id:'approval_choice',   class:'transient',   kind:'enum · drives terminal routing' }
+  ]
+};
+
+// --- Data: 27 Splices ---
+const SPLICES_BY_KIND = {
+  'routing': [
+    { name:'route_create_disambiguation',     trigger:"intent_router classified message as 'create_po'", effect:"Ask 'Are you starting fresh, or have a quote / PR / SO / tender to base this on?'. Route to the matching journey.", activates:[] },
+    { name:'user_changes_mind_to_referenced', trigger:"user mentions quote/PR/SO/tender mid-journey", effect:"Re-route to the sibling journey, carry over already-filled slots.", activates:[] },
+    { name:'next_journey_hint',               trigger:"journey ended successfully", effect:"Suggest a sensible next journey based on PO status.", activates:[] }
+  ],
+  'slot_activation': [
+    { name:'potype_capital',          trigger:"po_type == 'CAPITAL'",          effect:"Capital POs need a funding proposal.", activates:['proposal_id'] },
+    { name:'potype_consignment',      trigger:"po_type == 'CONSIGNMENT'",      effect:"Switches to consignment validation path; stock owned by supplier until consumed.", activates:['consignment_rule'] },
+    { name:'potype_dropship',         trigger:"po_type == 'DROPSHIP'",         effect:"Opens the Specify Dropship Address sub-flow.", activates:['customer_code','dropship_id'] },
+    { name:'manual_numbering',        trigger:"numbering_series == '~MANUAL~'",effect:"User must type the PO number themselves.", activates:['po_no_manual'] },
+    { name:'imports_flag_on',         trigger:"imports_flag == true",          effect:"Customs / freight / insurance TCD codes become mandatory.", activates:['import_tcd_codes'] },
+    { name:'non_stockable_line',      trigger:"item.stockability == non_stockable", effect:"Account-group + cost-center attribution required for this line.", activates:['ac_usage','cc_usage'] },
+    { name:'stockable_line',          trigger:"item.stockability == stockable", effect:"Stockable items need a receiving warehouse.", activates:['warehouse_code'] },
+    { name:'adhoc_item_fallback',     trigger:"item not in master AND user confirms adhoc", effect:"Skip the master lookup; classify the line by Adhoc Class.", activates:['adhoc_item_class'] }
+  ],
+  'slot_deactivation': [
+    { name:'potype_deactivation_cascade', trigger:"po_type just changed value", effect:"Unset slots that no longer apply (e.g. proposal_id when leaving CAPITAL).", activates:[] }
+  ],
+  'sub_flow_gate': [
+    { name:'gate_budget',         trigger:"resolve_conditional_details · offered", effect:"Optional: tag the PO to a purchase budget.", activates:['budget_id'] },
+    { name:'gate_payment_terms',  trigger:"resolve_conditional_details · offered", effect:"Optional: pay term, mode, pay-to override. Other 22 Terms fields auto-default.", activates:['payment_terms'] },
+    { name:'gate_tcd',            trigger:"resolve_conditional_details · offered", effect:"Optional: taxes / charges / discounts beyond auto-calculated.", activates:['tcd_details'] },
+    { name:'gate_quality',        trigger:"resolve_conditional_details · offered", effect:"Optional: quality specs enforced at goods receipt.", activates:['quality_attributes'] },
+    { name:'gate_schedule_split', trigger:"schedule_type == MULTIPLE OR offered", effect:"Optional: split into multiple delivery schedules.", activates:['schedule_details'] },
+    { name:'gate_pr_coverage',    trigger:"user mentions PR OR offered", effect:"Optional: link this PO to an open Purchase Request.", activates:['pr_coverage'] },
+    { name:'gate_so_coverage',    trigger:"user mentions SO OR offered", effect:"Optional: link this PO to a Sale Order.", activates:['so_coverage'] },
+    { name:'gate_notes',          trigger:"user signal OR offered at end", effect:"Optional: free-text notes for the supplier or file.", activates:['notes_text'] }
+  ],
+  'terminal_routing': [
+    { name:'hold_flag_blocks_approval',          trigger:"hold_flag == true AT terminal", effect:"PO skips the approval workflow regardless of approval_choice.", activates:[] },
+    { name:'terminal_save_as_draft',             trigger:"approval_choice == 'leave_as_draft' OR hold_flag", effect:"PO stays in Draft. Suggest approve_po as next journey.", activates:[] },
+    { name:'terminal_create_and_approve',        trigger:"approval_choice == 'approve_now' AND user has authority", effect:"PO goes directly to Authorized via the TRN4 transition.", activates:[] },
+    { name:'terminal_approve_lacks_authority',   trigger:"approval_choice == 'approve_now' AND NOT authority", effect:"Inform user; hand off to workflow approver or leave Draft.", activates:[] }
+  ],
+  'validation': [
+    { name:'validation_failure_translation',           trigger:"any submit API returns an error",       effect:"Translate the technical error code (via PO_Design_ErrorMessage.xlsx) into plain language; offer a fix.", activates:[] },
+    { name:'validation_failure_uniqueness',            trigger:"duplicate PO No. (manual numbering only)", effect:"Ask user to pick a different number or switch to auto-generation.", activates:[] },
+    { name:'validation_failure_master_data_missing',   trigger:"entity lookup returns not-found OR inactive", effect:"Per-entity recovery — try a different search, or create the master record first.", activates:[] }
+  ]
+};
+
+// --- Render functions ---
+function showGraphView() {
+  modalGraphView.style.display = '';
+  modalOtherView.style.display = 'none';
+  modalOtherView.innerHTML = '';
+}
+function showOtherView(html) {
+  modalGraphView.style.display = 'none';
+  modalOtherView.style.display = '';
+  modalOtherView.innerHTML = html;
+}
+
+function renderJourneysModal() {
+  modalTitle.textContent = '13 Master Journeys';
+  modalSub.textContent = 'entry-point disjoint · users always route to exactly one';
+  const html = `
+    <div class="modal-intro"><b>Entry-point disjoint, lifecycle linked.</b> The intent router picks exactly one of these 13 journeys for any opening message. Once inside, they share statuses, slots, splices, and rules — so a PO created in one journey is approved in another, amended in a third, closed in a fourth.</div>
+    <div class="modal-jgrid">
+      ${JOURNEYS_DATA.map(j => `
+        <div class="modal-jcard ${j.built ? 'built' : ''}">
+          <div class="jcard-bucket">${j.bucket}</div>
+          <div class="jcard-name">${j.name}</div>
+          <div class="jcard-activity">${j.activity}</div>
+          <div class="jcard-desc">${j.desc}</div>
+          <div class="jcard-badge">${j.built ? '★ Fully built' : 'Catalogued'}</div>
+        </div>
+      `).join('')}
+    </div>`;
+  showOtherView(html);
+}
+
+function renderStepsModal() {
+  modalTitle.textContent = 'Business Steps';
+  modalSub.textContent = '7 ordered steps · the conversation flow for Create Direct PO';
+  const html = `
+    <div class="modal-intro">Each Journey is broken into <b>business steps</b> — the natural mental units of the conversation. Below are the 7 steps for <b>Create Direct PO</b>. Steps are advanced deterministically once their required slots are filled.</div>
+    <div class="modal-step-timeline">
+      ${STEPS_DATA.map(s => `
+        <div class="modal-step-card">
+          <div class="modal-step-num">${s.num}</div>
+          <div class="modal-step-content">
+            <div class="step-name">${s.name}</div>
+            <div class="step-business">${s.business}</div>
+            <div class="step-quote">${escapeHtml(s.conversation)}</div>
+            <div class="step-counts"><span><b>${s.slots.length}</b> slot${s.slots.length===1?'':'s'}</span> · <span><b>${s.splices.length}</b> splice${s.splices.length===1?'':'s'}</span> · <span><b>${s.rules.length}</b> rule${s.rules.length===1?'':'s'}</span></div>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
+  showOtherView(html);
+}
+
+function renderSlotsModal() {
+  modalTitle.textContent = 'Slots';
+  modalSub.textContent = '~49 reusable · the inputs the chat collects';
+  let html = `<div class="modal-intro">A <b>slot</b> is one input the chat collects, defaults, or infers. Slots are typed (number, date, enum, entity reference) and classed (required, optional, conditional, defaultable, system-derived, transient). Below: slots grouped by where they live in the journey.</div>`;
+  for (const [scope, list] of Object.entries(SLOTS_BY_SCOPE)) {
+    html += `<div class="modal-section-title">${scope.toUpperCase()} · ${list.length} slot${list.length===1?'':'s'}</div>`;
+    html += `<div class="modal-slots-grid">`;
+    for (const s of list) {
+      html += `<div class="modal-slot-pill">
+        <div class="name">${s.id}</div>
+        <div class="meta"><span class="ctag ${s.class}">${s.class.replace('_',' ')}</span>${s.kind}</div>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+  showOtherView(html);
+}
+
+function renderSplicesModal() {
+  modalTitle.textContent = 'Splices';
+  modalSub.textContent = '27 conditional rules · the if-then logic that branches the conversation';
+  let html = `<div class="modal-intro">A <b>splice</b> is a triggerable conditional. When slots get filled, splices evaluate their trigger predicates; the ones that fire change behaviour — activating new slots, opening sub-flows, routing to a different journey, or translating validation failures. Splices are how one slot choice changes the entire downstream conversation.</div>`;
+  const kindOrder = ['routing', 'slot_activation', 'slot_deactivation', 'sub_flow_gate', 'terminal_routing', 'validation'];
+  for (const kind of kindOrder) {
+    const list = SPLICES_BY_KIND[kind] || [];
+    html += `<div class="modal-section-title">${kind.replace(/_/g, ' ').toUpperCase()} · ${list.length}</div>`;
+    for (const sp of list) {
+      const activatesHtml = sp.activates && sp.activates.length
+        ? `<div class="activates">${sp.activates.map(a => `<span class="pill">${a}</span>`).join('')}</div>`
+        : '';
+      html += `
+        <div class="modal-splice-card">
+          <div class="name">${sp.name}</div>
+          <div class="trigger">trigger: <code>${escapeHtml(sp.trigger)}</code></div>
+          <div class="effect">${escapeHtml(sp.effect)}</div>
+          ${activatesHtml}
+        </div>`;
+    }
+  }
+  showOtherView(html);
+}
+
+function renderGraphModal() {
+  modalTitle.textContent = 'PO Knowledge Graph';
+  modalSub.textContent = 'all 13 journeys · 5 key statuses · produces / acts_on / transitions edges';
+  showGraphView();
+}
+
+function openLayerModal(layer) {
+  if (layer === 'graph')         renderGraphModal();
+  else if (layer === 'journeys') renderJourneysModal();
+  else if (layer === 'steps')    renderStepsModal();
+  else if (layer === 'slots')    renderSlotsModal();
+  else if (layer === 'splices')  renderSplicesModal();
+  openMasterModal();
+  // Scroll modal body to top
+  document.getElementById('modal-body').scrollTop = 0;
+}
+
+// Wire up clickable hbox layers
+document.querySelectorAll('.hbox-clickable').forEach(el => {
+  el.addEventListener('click', () => {
+    const layer = el.dataset.layer;
+    if (layer) openLayerModal(layer);
+  });
+});
+
+// "Open the master graph" button — also goes through the dispatcher
+if (openGraphBtn) openGraphBtn.addEventListener('click', () => openLayerModal('graph'));
+
+// Close handlers
 if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeMasterModal);
 if (masterModal) masterModal.addEventListener('click', (e) => {
   if (e.target === masterModal) closeMasterModal();
