@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>From a thousand screens to one conversation · Ramco PO Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:        #f3f1e2;
+    --cream-light:  #f7f5e8;
+    --white:        #fefdf6;
+    --ink:          #161613;
+    --ink-2:        #3a3a35;
+    --muted:        #6f6d62;
+    --muted-2:      #97948a;
+    --border:       #ddd9c4;
+    --border-soft:  #e8e5d0;
+    --purple:       #e0cefa;
+    --purple-mid:   #c5a8f0;
+    --purple-deep:  #5c3a96;
+    --green:        #0a3f30;
+    --green-2:      #1a5544;
+    --sage:         #b6c994;
+    --peach:        #f0c896;
+    --blue:         #b0c8e0;
+    --teal:         #98c4b8;
+    --rose:         #ecb8b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .mono  { font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* Top banner */
+  .top-banner {
+    background: var(--green);
+    color: #d9e6e0;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+  }
+  .top-banner b { color: white; font-weight: 500; }
+  .top-banner a { color: var(--purple); text-decoration: none; font-weight: 500; }
+  .top-banner a:hover { text-decoration: underline; }
+
+  /* Nav */
+  .nav-wrap { padding: 18px 0; }
+  .nav {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px 10px 28px;
+  }
+  .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+  .logo .dot { display: inline-block; width: 8px; height: 8px; background: var(--purple-deep); border-radius: 50%; margin: 0 1px; vertical-align: middle; }
+  .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14px; color: var(--ink-2); }
+  .nav-links a { color: var(--ink-2); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--purple);
+    border: 1px solid transparent;
+    border-radius: 100px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform 0.15s;
+    font-family: inherit;
+  }
+  .nav-cta:hover { transform: translateY(-1px); background: var(--purple-mid); }
+
+  /* Hero */
+  .hero { padding: 80px 0 100px; text-align: center; }
+  .hero .eyebrow {
+    display: inline-block;
+    background: rgba(92, 58, 150, 0.08);
+    color: var(--purple-deep);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 8vw, 92px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--purple-deep);
+  }
+  .hero p.lede {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 auto 36px;
+    line-height: 1.55;
+  }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary {
+    border-radius: 100px;
+    padding: 14px 26px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.15s, background 0.15s;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .btn-primary { background: var(--purple); }
+  .btn-primary:hover { background: var(--purple-mid); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; border-color: var(--border); }
+  .btn-secondary:hover { background: var(--cream-light); }
+
+  /* Section base */
+  section { padding: 88px 0; }
+  section + section { border-top: 1px solid var(--border-soft); }
+  .eyebrow-sm {
+    display: inline-block;
+    color: var(--purple-deep);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 820px;
+  }
+  section h2 em {
+    font-style: italic; color: var(--purple-deep); font-weight: 300;
+  }
+  section .intro {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 0 48px;
+    line-height: 1.6;
+  }
+
+  /* The Problem */
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .pcard {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 28px 30px;
+  }
+  .pcard .ptag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+  .pcard.before .ptag { background: rgba(236, 184, 184, 0.4); color: #8b4040; }
+  .pcard.after .ptag  { background: rgba(182, 201, 148, 0.5); color: #4a6630; }
+  .pcard p {
+    color: var(--ink-2);
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.65;
+  }
+  .pcard .visual {
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* Conversation simulator */
+  .sim {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+  }
+  .sim-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--cream-light);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .sim-head > div {
+    padding: 18px 28px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .sim-head > div + div { border-left: 1px solid var(--border-soft); }
+  .sim-body { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .sim-chat, .sim-back {
+    padding: 28px 30px;
+  }
+  .sim-chat { border-right: 1px solid var(--border-soft); }
+  .sim-back { background: var(--cream-light); overflow-y: auto; max-height: 600px; }
+
+  .msg { margin-bottom: 20px; }
+  .msg .who {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-2);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .msg.user { text-align: right; }
+  .msg.user .who { text-align: right; }
+  .bubble {
+    display: inline-block;
+    max-width: 90%;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.55;
+    text-align: left;
+  }
+  .msg.user .bubble {
+    background: var(--green);
+    color: white;
+    border-top-right-radius: 4px;
+  }
+  .msg.bot .bubble {
+    background: var(--cream-light);
+    color: var(--ink);
+    border: 1px solid var(--border-soft);
+    border-top-left-radius: 4px;
+  }
+  .msg.intro { opacity: 0.55; }
+
+  .bk-section { margin-bottom: 20px; }
+  .bk-section h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .bk-card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  .bk-card .placeholder {
+    color: var(--muted-2);
+    font-style: italic;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  .badge.recipe   { background: rgba(176, 200, 224, 0.4); color: #2a4a6e; }
+  .badge.splice   { background: rgba(197, 168, 240, 0.35); color: #5c3a96; font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+  .badge.slot     { background: rgba(182, 201, 148, 0.4); color: #4a6630; font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+  .badge.llm      { background: rgba(182, 201, 148, 0.4); color: #4a6630; }
+  .badge.det      { background: rgba(213, 209, 196, 0.5); color: var(--muted); }
+  .kv { display: grid; grid-template-columns: 130px 1fr; gap: 7px 14px; font-size: 12px; }
+  .kv .k { color: var(--muted); font-weight: 500; }
+  .kv .v { color: var(--ink-2); font-family: 'JetBrains Mono', monospace; font-size: 11px; word-break: break-word; }
+
+  .new-flash {
+    animation: gentleFlash 1.6s ease-out;
+  }
+  @keyframes gentleFlash {
+    0%   { background: rgba(182, 201, 148, 0.4); }
+    100% { background: transparent; }
+  }
+
+  .sim-explain {
+    padding: 20px 28px;
+    background: var(--cream-light);
+    border-top: 1px solid var(--border-soft);
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .sim-explain .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--purple-deep);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .sim-controls {
+    padding: 20px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--white);
+    border-top: 1px solid var(--border-soft);
+  }
+  .step-label { color: var(--muted); font-size: 13px; }
+  .step-label b { color: var(--ink); font-weight: 600; }
+  .ctl-buttons { display: flex; gap: 10px; }
+  .ctl-btn {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ctl-btn:hover { background: var(--white); border-color: var(--ink-2); }
+  .ctl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .ctl-btn.primary { background: var(--purple); border-color: var(--purple); color: var(--ink); }
+  .ctl-btn.primary:hover { background: var(--purple-mid); }
+
+  /* 12 phases */
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .phase {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 22px 22px 20px;
+    transition: transform 0.15s, border-color 0.15s;
+  }
+  .phase:hover { border-color: var(--purple-mid); transform: translateY(-2px); }
+  .phase .pnum {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28px;
+    color: var(--purple-deep);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .phase h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .phase p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .phase .out {
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted-2);
+  }
+
+  /* Linkage callout + journey map */
+  .linkage-callout {
+    background: rgba(197, 168, 240, 0.08);
+    border: 1px solid rgba(197, 168, 240, 0.3);
+    border-radius: 16px;
+    padding: 24px 30px;
+    margin: 0 0 40px;
+  }
+  .linkage-q {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--purple-deep);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    letter-spacing: -0.005em;
+  }
+  .linkage-cols {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  .linkage-col h5 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .linkage-col p {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .linkage-col code {
+    background: var(--white);
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink);
+  }
+
+  /* Hierarchy figure */
+  .hierarchy-diagram {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 22px;
+    padding: 32px 36px 28px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0;
+  }
+  .hlayer { display: flex; justify-content: center; gap: 16px; align-items: stretch; }
+  .hbox {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 24px 16px;
+    text-align: center;
+    min-width: 300px;
+  }
+  .hbox.h1 { background: var(--green); color: white; border-color: var(--green); min-width: 380px; }
+  .hbox.h2 { background: rgba(176, 200, 224, 0.30); border-color: rgba(76, 120, 170, 0.4); min-width: 420px; }
+  .hbox.h3 { background: rgba(86, 196, 184, 0.18); border-color: rgba(86, 156, 144, 0.4); min-width: 360px; }
+  .hbox.h4-slot { background: rgba(182, 201, 148, 0.22); border-color: rgba(120, 150, 80, 0.4); min-width: 200px; max-width: 220px; }
+  .hbox.h4-splice { background: rgba(197, 168, 240, 0.20); border-color: rgba(140, 100, 200, 0.4); min-width: 200px; max-width: 220px; }
+  .hbox .hicon {
+    font-size: 16px;
+    color: var(--purple-deep);
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+  }
+  .hbox.h1 .hicon { color: var(--purple); }
+  .hbox .hlabel {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .hbox.h1 .hlabel { color: white; }
+  .hbox .hmeta { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .hbox.h1 .hmeta { color: rgba(217, 230, 224, 0.85); }
+  .harrow {
+    padding: 10px 0 0;
+    text-align: center;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+  }
+  .harrow::after {
+    content: '';
+    display: block;
+    width: 1px; height: 18px;
+    background: var(--border);
+    margin: 6px auto 0;
+  }
+  .hierarchy-callout {
+    margin: 24px auto 0;
+    padding: 18px 26px;
+    background: rgba(197, 168, 240, 0.10);
+    border: 1px solid rgba(197, 168, 240, 0.30);
+    border-radius: 14px;
+    font-size: 14px; color: var(--ink-2); line-height: 1.65;
+    max-width: 720px; text-align: center;
+  }
+  .hierarchy-callout strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--purple-deep);
+    display: block; margin-bottom: 6px;
+    font-size: 16px;
+  }
+
+  /* Master graph launcher + compact pills */
+  .mg-launcher {
+    background: linear-gradient(135deg, rgba(197, 168, 240, 0.15), rgba(182, 201, 148, 0.10));
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .mg-launcher-info h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .mg-launcher-info p { font-size: 13px; color: var(--muted); margin: 0; max-width: 560px; line-height: 1.55; }
+  .mg-launcher .btn-primary { white-space: nowrap; }
+
+  .compact-journeys {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 14px 24px;
+  }
+  .cj-group {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+    padding: 12px 0;
+  }
+  .cj-group + .cj-group { border-top: 1px dashed var(--border-soft); }
+  .cj-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple-deep);
+    font-weight: 600;
+    min-width: 130px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .cj-pill {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 13px;
+    color: var(--ink-2);
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .cj-pill .activity {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .cj-pill.built {
+    background: white;
+    border: 2px solid var(--purple-mid);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(92, 58, 150, 0.08);
+    padding: 4px 14px;
+  }
+  .cj-pill.built:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(92, 58, 150, 0.16); }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(22, 22, 19, 0.65);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 1000;
+    padding: 24px;
+  }
+  .modal-overlay.open { display: flex; animation: modalFade 0.18s ease-out; }
+  @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+  .modal-card {
+    background: var(--cream);
+    border-radius: 18px;
+    max-width: 1180px; width: 100%;
+    max-height: 90vh;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+  .modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 26px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .modal-header h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .modal-header .modal-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-left: 12px;
+  }
+  .modal-close {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 16px; cursor: pointer;
+    color: var(--ink-2);
+    line-height: 1;
+    font-family: inherit;
+  }
+  .modal-close:hover { background: var(--white); border-color: var(--ink-2); }
+  .modal-body {
+    padding: 24px 28px 28px;
+    overflow: auto;
+    flex: 1;
+  }
+  .modal-svg-wrap { width: 100%; overflow-x: auto; }
+  .modal-svg { display: block; width: 100%; min-width: 1000px; height: auto; }
+  .modal-svg .node-rect { stroke-width: 1.5; transition: filter 0.15s; }
+  .modal-svg .node-rect.create { fill: rgba(176, 200, 224, 0.32); stroke: rgba(60, 100, 150, 0.6); }
+  .modal-svg .node-rect.create.built {
+    fill: white; stroke: #5c3a96; stroke-width: 2.5;
+    filter: drop-shadow(0 4px 10px rgba(92, 58, 150, 0.20));
+  }
+  .modal-svg .node-rect.act { fill: rgba(197, 168, 240, 0.22); stroke: rgba(92, 58, 150, 0.55); }
+  .modal-svg .node-rect.read { fill: rgba(248, 240, 220, 0.7); stroke: var(--muted); stroke-dasharray: 5,3; }
+  .modal-svg .status-rect { fill: #0a3f30; stroke: #0a3f30; }
+  .modal-svg .status-rect.term { fill: rgba(236, 184, 184, 0.55); stroke: rgba(139, 64, 64, 0.5); }
+  .modal-svg text { font-family: 'Inter', sans-serif; pointer-events: none; }
+  .modal-svg .jtname { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .modal-svg .jtname.on-status { fill: white; font-family: 'Fraunces', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.06em; }
+  .modal-svg .jtname.on-term { fill: #6b3030; font-size: 11px; font-weight: 500; }
+  .modal-svg .jtsmall { font-size: 10px; fill: var(--purple-deep); font-family: 'JetBrains Mono', monospace; }
+  .modal-svg .edge { fill: none; stroke-width: 1.5; }
+  .modal-svg .edge.solid { stroke: rgba(92, 58, 150, 0.45); }
+  .modal-svg .edge.dashed { stroke: rgba(122, 120, 114, 0.5); stroke-dasharray: 4,3; stroke-width: 1.2; }
+  .modal-svg .edge.bidir { stroke: rgba(92, 58, 150, 0.45); }
+  .modal-svg .edge-label {
+    font-size: 9px; font-family: 'JetBrains Mono', monospace;
+    fill: var(--muted); letter-spacing: 0.04em;
+  }
+
+  /* Master graph */
+  .master-graph-wrap {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 28px 24px 24px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .mg-title {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px; flex-wrap: wrap; gap: 12px;
+  }
+  .mg-title h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .mg-title .mg-sub {
+    color: var(--muted); font-size: 13px;
+  }
+  .mg-legend {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    padding: 12px 0 20px;
+    font-size: 12px; color: var(--muted-2);
+  }
+  .mg-legend .leg-item { display: flex; align-items: center; gap: 7px; }
+  .mg-legend .leg-swatch {
+    width: 24px; height: 14px; border-radius: 4px;
+    border: 1px solid transparent;
+  }
+  .mg-legend .leg-swatch.create-c { background: rgba(176, 200, 224, 0.4); border-color: rgba(176, 200, 224, 0.7); }
+  .mg-legend .leg-swatch.act-c    { background: rgba(197, 168, 240, 0.25); border-color: rgba(197, 168, 240, 0.6); }
+  .mg-legend .leg-swatch.read-c   { background: rgba(248, 240, 220, 0.6); border-color: var(--border); border-style: dashed; }
+  .mg-legend .leg-swatch.status-c { background: var(--green); border-radius: 100px; }
+  .mg-legend .leg-swatch.terminal-c { background: rgba(236, 184, 184, 0.5); border-radius: 100px; }
+  .master-svg-container { width: 100%; overflow-x: auto; }
+  .master-svg { display: block; width: 100%; min-width: 1080px; height: auto; }
+  .master-svg .node-rect { stroke-width: 1.5; transition: filter 0.15s; }
+  .master-svg .node-rect.create  { fill: rgba(176, 200, 224, 0.30); stroke: rgba(60, 100, 150, 0.55); }
+  .master-svg .node-rect.create.built { fill: white; stroke: #5c3a96; stroke-width: 2.5; }
+  .master-svg .node-rect.act     { fill: rgba(197, 168, 240, 0.22); stroke: rgba(92, 58, 150, 0.55); }
+  .master-svg .node-rect.read    { fill: rgba(248, 240, 220, 0.6); stroke: var(--muted); stroke-dasharray: 5,3; }
+  .master-svg .status-rect       { fill: #0a3f30; stroke: #0a3f30; }
+  .master-svg .status-rect.term  { fill: rgba(236, 184, 184, 0.55); stroke: rgba(139, 64, 64, 0.5); }
+  .master-svg text { font-family: 'Inter', sans-serif; }
+  .master-svg .jtname { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .master-svg .jtname.on-dark { fill: white; }
+  .master-svg .jtname.on-status { font-family: 'Fraunces', serif; font-weight: 500; font-size: 14px; letter-spacing: 0.04em; }
+  .master-svg .jtsmall { font-size: 10px; fill: var(--purple-deep); font-family: 'JetBrains Mono', monospace; }
+  .master-svg .jtsmall.on-dark { fill: rgba(217, 230, 224, 0.85); }
+  .master-svg .edge { fill: none; stroke-width: 1.5; }
+  .master-svg .edge.solid { stroke: rgba(92, 58, 150, 0.5); }
+  .master-svg .edge.dashed { stroke: rgba(122, 120, 114, 0.5); stroke-dasharray: 4,3; stroke-width: 1.2; }
+  .master-svg .edge-label {
+    font-size: 9px; font-family: 'JetBrains Mono', monospace;
+    fill: var(--muted-2); letter-spacing: 0.04em;
+  }
+  .master-svg .node-rect.built-glow {
+    filter: drop-shadow(0 4px 8px rgba(92, 58, 150, 0.18));
+  }
+  .master-svg .node-clickable { cursor: pointer; }
+  .master-svg .node-clickable:hover .node-rect.built { fill: rgba(197, 168, 240, 0.1); }
+
+  .journey-map { margin-top: 16px; }
+
+  .lifecycle-group {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 20px 24px 22px;
+  }
+  .lifecycle-label {
+    display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border-soft);
+    flex-wrap: wrap;
+  }
+  .lc-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--purple-deep);
+    line-height: 1;
+  }
+  .lc-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .lc-meta {
+    color: var(--muted);
+    font-size: 13px;
+    margin-left: auto;
+  }
+  .journey-cards-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  .jcard {
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: all 0.15s;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .jcard.built {
+    background: white;
+    border: 2px solid var(--purple-mid);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(92, 58, 150, 0.07);
+  }
+  .jcard.built:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(92, 58, 150, 0.14);
+  }
+  .jcard.power { border-style: dashed; }
+  .jcard .jname {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .jcard .jactivity {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--purple-deep);
+    margin-bottom: 8px;
+  }
+  .jcard .jdesc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    flex: 1;
+  }
+  .jcard .jbadge {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    color: var(--muted-2);
+    padding: 3px 9px;
+    background: var(--cream);
+    border-radius: 100px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .jcard .jbadge.built {
+    background: rgba(182, 201, 148, 0.45);
+    color: #3d5c25;
+  }
+  .lifecycle-arrow {
+    text-align: center;
+    padding: 16px 0;
+    color: var(--muted-2);
+  }
+  .lifecycle-arrow .arrow-symbol {
+    font-size: 22px;
+    line-height: 1;
+    color: var(--muted-2);
+  }
+  .lifecycle-arrow .arrow-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-left: 14px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .journey-cards-row { grid-template-columns: 1fr 1fr; }
+    .linkage-cols { grid-template-columns: 1fr; }
+    .lc-meta { margin-left: 0; width: 100%; }
+  }
+
+  /* Journey graph view */
+  .journey-hero {
+    background: linear-gradient(135deg, rgba(197, 168, 240, 0.20), rgba(182, 201, 148, 0.18));
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px 36px;
+    display: flex; justify-content: space-between; align-items: center; gap: 28px;
+    flex-wrap: wrap;
+  }
+  .journey-hero .jinfo h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .journey-hero .jinfo .meta {
+    color: var(--ink-2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .jstats { display: flex; gap: 14px; }
+  .jstat {
+    background: rgba(254, 253, 246, 0.85);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 14px 22px;
+    text-align: center;
+    min-width: 96px;
+  }
+  .jstat .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .jstat .l {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .jstat.steps   .n { color: #2a4a6e; }
+  .jstat.slots   .n { color: #4a6630; }
+  .jstat.splices .n { color: var(--purple-deep); }
+  .jstat.rules   .n { color: #8b6020; }
+
+  .ribbon {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 14px;
+    margin: 32px 0 14px;
+    display: flex; gap: 8px;
+  }
+  .rstep {
+    flex: 1;
+    padding: 14px 12px;
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 0;
+  }
+  .rstep:hover { border-color: var(--purple-mid); transform: translateY(-1px); }
+  .rstep.active {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
+  }
+  .rstep.active .rnum { color: rgba(255, 255, 255, 0.7); }
+  .rstep.active .rname { color: white; }
+  .rstep.active .rcount { color: rgba(255, 255, 255, 0.65); }
+  .rnum {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .rname {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .rcount {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--muted-2);
+    margin-top: 4px;
+  }
+  .ribbon-hint {
+    text-align: center;
+    color: var(--muted-2);
+    font-size: 12px;
+    margin: 14px 0;
+  }
+
+  .step-detail {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 30px 34px;
+  }
+  .step-detail header {
+    display: flex; align-items: baseline; gap: 14px;
+    padding-bottom: 20px; border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 24px;
+  }
+  .step-detail header .pill {
+    background: rgba(197, 168, 240, 0.25);
+    color: var(--purple-deep);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .step-detail header h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .step-detail header .step-id {
+    color: var(--muted-2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    margin-left: auto;
+  }
+  .vgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px; }
+  .vcard {
+    background: var(--cream-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+  .vcard .vlabel {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .vcard p { color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+  .vcard.convo p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--green);
+    border-left: 3px solid var(--green);
+    padding-left: 14px;
+  }
+  .three { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 18px; }
+  @media (max-width: 900px) {
+    .three { grid-template-columns: 1fr; }
+  }
+  .col {
+    background: var(--cream-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    min-height: 220px;
+  }
+  .col-head {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;
+  }
+  .col-head .ctitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .col.slots-c .ctitle { color: #4a6630; }
+  .col.splices-c .ctitle { color: var(--purple-deep); }
+  .col.rules-c .ctitle { color: #8b6020; }
+  .col-head .count {
+    background: var(--white);
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .slot-tag {
+    display: inline-block;
+    background: rgba(182, 201, 148, 0.3);
+    color: #4a6630;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    margin: 0 4px 6px 0;
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid rgba(182, 201, 148, 0.5);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .slot-tag:hover { background: rgba(182, 201, 148, 0.5); }
+  .slot-tag.conditional {
+    background: rgba(197, 168, 240, 0.25);
+    color: var(--purple-deep);
+    border-color: rgba(197, 168, 240, 0.45);
+  }
+  .splice-card-inline {
+    background: rgba(197, 168, 240, 0.10);
+    border: 1px solid rgba(197, 168, 240, 0.3);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .splice-card-inline .sname {
+    color: var(--purple-deep);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .splice-card-inline .strigger {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 4px;
+  }
+  .splice-card-inline .strigger code {
+    background: var(--white);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--ink-2);
+    font-size: 10px;
+  }
+  .splice-card-inline .seffect {
+    background: var(--white);
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 8px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .splice-card-inline .activates {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; align-items: center;
+  }
+  .splice-card-inline .activates::before {
+    content: "activates →";
+    font-size: 10px;
+    color: var(--muted-2);
+    margin-right: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .rule-card-inline {
+    border-left: 3px solid var(--peach);
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    background: rgba(240, 200, 150, 0.10);
+    border-radius: 0 6px 6px 0;
+  }
+  .rule-card-inline .rname {
+    color: #8b6020;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .rule-card-inline .rstmt {
+    color: var(--ink-2);
+    font-size: 13px;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* Splice fan-out */
+  .fanout {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 32px 36px;
+  }
+  .fanout-grid {
+    display: grid;
+    grid-template-columns: 240px 70px 1fr 70px 1fr;
+    align-items: center;
+    gap: 0;
+    row-gap: 22px;
+    margin-top: 16px;
+  }
+  .fo-source {
+    background: var(--cream-light);
+    border: 2px solid var(--green);
+    border-radius: 16px;
+    padding: 20px 22px;
+    text-align: center;
+    grid-row: span 4;
+    align-self: center;
+  }
+  .fo-source .slabel {
+    font-size: 11px; color: var(--green); text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;
+  }
+  .fo-source .svalue {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .fo-source .svalues {
+    display: flex; flex-direction: column; gap: 6px; margin-top: 16px;
+  }
+  .v-pill {
+    background: var(--white);
+    color: var(--green);
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid var(--green);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .arrow-cell {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted-2);
+  }
+  .arrow-cell .when {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+  }
+  .arrow-cell .a-wrap { display: flex; flex-direction: column; align-items: center; }
+  .arrow-cell .arrow { font-size: 20px; color: var(--border); }
+  .fo-splice {
+    background: rgba(197, 168, 240, 0.15);
+    border: 1px solid rgba(197, 168, 240, 0.5);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .fo-splice .splabel {
+    font-size: 10px;
+    color: var(--purple-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .fo-splice .spname {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+  .fo-target {
+    background: rgba(182, 201, 148, 0.15);
+    border: 1px solid rgba(182, 201, 148, 0.5);
+    border-radius: 14px;
+    padding: 12px 16px;
+  }
+  .fo-target .tlabel {
+    font-size: 10px;
+    color: #4a6630;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .fo-target .tnames {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px;
+  }
+
+  .legend {
+    display: flex; gap: 22px; flex-wrap: wrap; margin-top: 28px;
+    padding: 16px 22px; background: var(--cream-light); border-radius: 12px;
+  }
+  .leg { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-2); }
+  .leg .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Sources grid */
+  .sources-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+  @media (max-width: 900px) {
+    .sources-grid { grid-template-columns: 1fr 1fr; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .phases { grid-template-columns: 1fr 1fr; }
+    .sim-body { grid-template-columns: 1fr; }
+    .sim-chat { border-right: none; border-bottom: 1px solid var(--border-soft); }
+    .sim-head { grid-template-columns: 1fr; }
+    .sim-head > div + div { border-left: none; border-top: 1px solid var(--border-soft); }
+    .fanout-grid { grid-template-columns: 1fr; gap: 12px; }
+    .fo-source { grid-row: span 1; }
+    .arrow-cell { display: none; }
+    .journey-hero { flex-direction: column; align-items: stretch; }
+    .jstats { justify-content: space-around; }
+  }
+  .source-col {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column;
+  }
+  .source-col .sname-h {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .source-col .sfile {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  .source-col .extract {
+    background: var(--cream-light);
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    flex: 1;
+    word-break: break-word;
+  }
+  .source-col.api      .sname-h { color: var(--purple-deep); }
+  .source-col.screen   .sname-h { color: #2a6a5e; }
+  .source-col.sp       .sname-h { color: #8b4040; }
+  .source-col.training .sname-h { color: #4a6630; }
+  .source-col.csv      .sname-h { color: #8b6020; }
+
+  .slot-spotlight {
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 18px 24px;
+    display: flex; align-items: center; gap: 18px; margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .slot-spotlight .spill {
+    background: var(--green);
+    color: white;
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .slot-spotlight p {
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--green);
+    color: #d9e6e0;
+    padding: 60px 0;
+    margin-top: 60px;
+  }
+  footer h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    color: white;
+    margin-bottom: 14px;
+    letter-spacing: -0.015em;
+  }
+  footer p { font-size: 14px; line-height: 1.6; max-width: 600px; }
+  footer .small {
+    margin-top: 32px;
+    font-size: 12px;
+    color: rgba(217, 230, 224, 0.6);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  footer code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--purple);
+  }
+
+  /* Slot popover */
+  .slot-popover {
+    position: fixed;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 28px rgba(22, 22, 19, 0.12);
+    z-index: 100;
+    display: none;
+    max-width: 360px;
+  }
+  .slot-popover.open { display: block; }
+  .slot-popover .pname {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a6630;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .slot-popover .prow {
+    font-size: 12px;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .slot-popover .prow b {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-right: 8px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .slot-popover .prow span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-banner">
+  Bridging Ramco's <b>1,000+ screens</b> into a single conversational interface · <a href="#how-we-built">See how we built it →</a>
+</div>
+
+<div class="container">
+  <div class="nav-wrap">
+    <nav class="nav">
+      <div class="logo">Journey<span class="dot"></span>Brain</div>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#live">See it live</a>
+        <a href="#how-we-built">How we built it</a>
+        <a href="#journey-map">All 13 journeys</a>
+        <a href="#graph">Drill in</a>
+      </div>
+      <button class="nav-cta">Run the demo</button>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">A purchase-order conversation engine for Ramco ERP</div>
+    <h1>
+      From a thousand screens,<br>
+      to one <em>conversation</em>.
+    </h1>
+    <p class="lede">
+      Creating a Purchase Order in Ramco today means 14 sub-screens, 200+ fields, and conditional rules nobody can remember. We built a knowledge graph so users can just say what they need — and the system does the rest.
+    </p>
+    <div class="hero-actions">
+      <a href="#live" class="btn-primary">See a real conversation →</a>
+      <a href="#how-we-built" class="btn-secondary">How we built it</a>
+    </div>
+  </div>
+</section>
+
+<!-- HIERARCHY · the mental model -->
+<section style="padding-top: 0; padding-bottom: 80px;">
+  <div class="container">
+    <div class="eyebrow-sm" style="text-align: center; display: block;">The mental model</div>
+    <h2 style="text-align: center; margin: 0 auto 14px;">Four layers, <em>top down</em>.</h2>
+    <p class="intro" style="text-align: center; margin: 0 auto 40px;">Everything in the system fits into this hierarchy. Routing decisions happen at the top (which Journey?). Conversation decisions happen at the bottom (which Slot to ask? which Splice fires?).</p>
+
+    <div class="hierarchy-diagram">
+      <div class="hlayer">
+        <div class="hbox h1">
+          <div class="hicon">◇  THE DOMAIN</div>
+          <div class="hlabel">PO Knowledge Graph</div>
+          <div class="hmeta">1 graph · 154 nodes · 554 edges</div>
+        </div>
+      </div>
+      <div class="harrow">routes user's first message to one of ↓</div>
+      <div class="hlayer">
+        <div class="hbox h2">
+          <div class="hicon">◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯</div>
+          <div class="hlabel">13 Master Journeys</div>
+          <div class="hmeta">entry-point disjoint · Create, Edit, Amend, Approve, Short Close, View…</div>
+        </div>
+      </div>
+      <div class="harrow">each journey contains ↓</div>
+      <div class="hlayer">
+        <div class="hbox h3">
+          <div class="hicon">━━━━━━━━━━━━━━</div>
+          <div class="hlabel">Business Steps</div>
+          <div class="hmeta">~7 ordered steps per journey · the conversation flow</div>
+        </div>
+      </div>
+      <div class="harrow">each step contains ↓</div>
+      <div class="hlayer">
+        <div class="hbox h4-slot">
+          <div class="hicon">◊  INPUTS</div>
+          <div class="hlabel">Slots</div>
+          <div class="hmeta">49 reusable · the inputs the chat collects from the user</div>
+        </div>
+        <div class="hbox h4-splice">
+          <div class="hicon">▲  LOGIC</div>
+          <div class="hlabel">Splices</div>
+          <div class="hmeta">27 conditional rules · the if-then logic that branches the flow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hierarchy-callout">
+      <strong>Routing happens at the top. Decisions happen at the bottom.</strong>
+      The Graph layer takes the user's first message and picks <i>exactly one</i> Journey. From that point on, every "what to ask next" decision is made <i>inside</i> the Journey, by the Splices that fire when Slots get filled. The Journey is the unit of intent; the Splice is the unit of decision.
+    </div>
+  </div>
+</section>
+
+<!-- 1 · THE PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="eyebrow-sm">1 · The Problem</div>
+    <h2>A hundred clicks, or <em>one sentence</em>.</h2>
+    <p class="intro">Every PO in Ramco today is a click-through across 14 sub-screens and 200+ fields, with conditional rules that depend on what the user just picked. We want a buyer who's never opened the ERP to say "I need 50 pumps from Acme" and get a complete PO.</p>
+
+    <div class="problem-grid">
+      <div class="pcard before">
+        <span class="ptag">Before · Screen-driven</span>
+        <p>User opens "Create Direct PO" screen. Picks Type from dropdown. Realises Capital needs a Proposal — opens another screen. Comes back. Picks Folder, Buyer, Currency, Tax Region… every field one of hundreds.</p>
+        <div class="visual">PoCrtMain → cbopotype → cbobuyer<br>→ Specify Dropship Address (12 fields)<br>→ Specify Budget Details (8 fields)<br>→ Specify Terms (27 fields)<br>…14 sub-screens. 200+ controls. Total.</div>
+      </div>
+      <div class="pcard after">
+        <span class="ptag">After · Chat-driven</span>
+        <p>User says it once, in their own words. The assistant infers which fields were supplied, which need asking, and only asks the ones that are both required and ambiguous. The conversation is about the order — not the software.</p>
+        <div class="visual">"50 industrial pumps from Acme by next month,<br> dropship to our Mumbai client"<br><br>bot: "Got it — dropship for 50 pumps. Currency?"<br><br>…5 turns later: PO/2026/38863 in Draft.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · SEE IT LIVE -->
+<section id="live">
+  <div class="container">
+    <div class="eyebrow-sm">2 · See It Live</div>
+    <h2>The same conversation, <em>side by side</em>.</h2>
+    <p class="intro">On the left, what the user sees: a chat. On the right, what we see internally: which slot was just filled, which rule (a "splice") fired, what the retriever pulled for this turn. Click Next to walk through the conversation, one turn at a time.</p>
+
+    <div class="sim">
+      <div class="sim-head">
+        <div>← What the user sees</div>
+        <div>What we see (behind the scenes) →</div>
+      </div>
+      <div class="sim-body">
+        <div class="sim-chat" id="sim-chat">
+          <div class="msg bot intro">
+            <div class="who">Bot</div>
+            <div class="bubble">Hi — what can I help you with on Purchase Orders?</div>
+          </div>
+        </div>
+        <div class="sim-back" id="sim-back">
+          <div class="bk-section">
+            <h4>Conversation state</h4>
+            <div class="bk-card"><div class="placeholder">Waiting for first user message…</div></div>
+          </div>
+          <div class="bk-section">
+            <h4>What just happened</h4>
+            <div class="bk-card"><div class="placeholder">Click "Next" to play the conversation.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sim-explain" id="explain">
+        <div class="label">Turn 0 · Idle</div>
+        <div>The bot is waiting. The runtime has no journey selected, no slots filled, no splices fired.</div>
+      </div>
+      <div class="sim-controls">
+        <div class="step-label">Turn <b id="turn-num">0</b> of <b>6</b></div>
+        <div class="ctl-buttons">
+          <button class="ctl-btn" id="prev-btn" disabled>◀ Prev</button>
+          <button class="ctl-btn primary" id="next-btn">Next ▶</button>
+          <button class="ctl-btn" id="reset-btn">↺ Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · HOW WE BUILT IT -->
+<section id="how-we-built">
+  <div class="container">
+    <div class="eyebrow-sm">3 · How We Built It</div>
+    <h2>Twelve phases. <em>One graph.</em></h2>
+    <p class="intro">Most of the work happened offline. We took raw Ramco artifacts — CSVs, OpenAPI specs, stored procedures, screen HTML, training docs — and turned them into a queryable knowledge graph. Twelve phases, each one feeding the next.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="pnum">01</div>
+        <h4>Source Registry</h4>
+        <p>Inventory every Ramco artifact, classify what each is useful for.</p>
+        <div class="out">→ 26 sources catalogued</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">02</div>
+        <h4>Journey Catalog</h4>
+        <p>Enumerate the 13 PO actions a user might ask for.</p>
+        <div class="out">→ create, edit, amend, approve…</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">03</div>
+        <h4>Evidence Extraction</h4>
+        <p>Pull structured facts from every source — fields, screens, branches, narratives.</p>
+        <div class="out">→ 1,194 facts for Create-Direct-PO</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">04</div>
+        <h4>Journey Synthesis</h4>
+        <p>Compress 14 screens and 222 tasks into 7 plain-English business steps.</p>
+        <div class="out">→ 20× compression</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">05</div>
+        <h4>Coverage Matrix</h4>
+        <p>Check each step has evidence from FSD, training, OLH, UAT, API, SP.</p>
+        <div class="out">→ Journey grade: A−</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">06</div>
+        <h4>Slot Model</h4>
+        <p>Every input the chat collects becomes a typed slot.</p>
+        <div class="out">→ 49 reusable slots</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">07</div>
+        <h4>Splices &amp; Rules</h4>
+        <p>The if-then logic. Splices change flow. Rules enforce policy.</p>
+        <div class="out">→ 27 splices · 19 rules · 9 statuses</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">08</div>
+        <h4>Knowledge Graph</h4>
+        <p>Assemble everything into one queryable graph.</p>
+        <div class="out">→ 154 nodes · 554 edges</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">09</div>
+        <h4>Retriever</h4>
+        <p>Given a user message, return the relevant subgraph — never the whole thing.</p>
+        <div class="out">→ 6 retrieval recipes</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">10</div>
+        <h4>Runtime Policy</h4>
+        <p>Track state, advance through steps, decide what to ask next.</p>
+        <div class="out">→ deterministic + LLM language</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">11</div>
+        <h4>Execution Plan</h4>
+        <p>Turn filled slots into a structured API payload + preflight checks.</p>
+        <div class="out">→ rule-validated submission</div>
+      </div>
+      <div class="phase">
+        <div class="pnum">12</div>
+        <h4>Chat App</h4>
+        <p>The user-facing wrapper. Hides everything above behind a chat window.</p>
+        <div class="out">→ this site</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · ALL 13 PO JOURNEYS — THE TOP-LEVEL MAP -->
+<section id="journey-map">
+  <div class="container">
+    <div class="eyebrow-sm">4 · The 13 PO Journeys</div>
+    <h2>Entry-point disjoint. Lifecycle <em>linked</em>.</h2>
+    <p class="intro">Every PO question routes to exactly one of these 13 journeys — the intent router never picks two. But once you're inside a journey, they're deeply connected: shared statuses, shared slots, shared rules, and a clear sequence of who hands off to whom. Here's the whole map.</p>
+
+    <div class="linkage-callout">
+      <div class="linkage-q">"Are the 13 journeys linked, or independent?" — both, in two specific ways.</div>
+      <div class="linkage-cols">
+        <div class="linkage-col">
+          <h5>Entry-point disjoint</h5>
+          <p>When a user types their first message, exactly one journey matches. If two could, the bot asks one clarifying question rather than guessing. Overlapping entry points would mean the same message routes to two different conversations — we'd never recover. This is enforced by the splice <code>route_create_disambiguation</code>.</p>
+        </div>
+        <div class="linkage-col">
+          <h5>Lifecycle linked</h5>
+          <p>A PO created in one journey is approved in another, amended in a third, closed in a fourth. They share the PO entity, its status state machine, and many <code>slots</code> / <code>splices</code> / <code>rules</code>. Twelve isolated journeys would mean re-defining "PO Type" twelve times — the graph keeps them DRY.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mg-launcher">
+      <div class="mg-launcher-info">
+        <h4>See the full master graph</h4>
+        <p>Every journey, every status, every edge in one diagram — opens in a popup so the page stays short.</p>
+      </div>
+      <button class="btn-primary" id="open-graph-btn">Open the master graph →</button>
+    </div>
+
+    <div class="compact-journeys">
+      <div class="cj-group">
+        <span class="cj-label">CREATE · 6</span>
+        <span class="cj-pill built" id="card-create-direct">Create Direct PO <span class="activity">PoCrt</span></span>
+        <span class="cj-pill">From Quotation <span class="activity">PoCrtQtn</span></span>
+        <span class="cj-pill">From PR <span class="activity">PoCrt+coverage</span></span>
+        <span class="cj-pill">From Sale Order <span class="activity">PoCrtSo</span></span>
+        <span class="cj-pill">From Tender <span class="activity">PoCrtTen</span></span>
+        <span class="cj-pill">Copy &amp; Create <span class="activity">PoCopy</span></span>
+      </div>
+      <div class="cj-group">
+        <span class="cj-label">MODIFY · 2</span>
+        <span class="cj-pill">Edit PO <span class="activity">PoEdt · pre-approval</span></span>
+        <span class="cj-pill">Amend PO <span class="activity">PoAmnd · post-approval</span></span>
+      </div>
+      <div class="cj-group">
+        <span class="cj-label">ADVANCE · 1</span>
+        <span class="cj-pill">Approve PO <span class="activity">PoApp</span></span>
+      </div>
+      <div class="cj-group">
+        <span class="cj-label">CLOSE · 2</span>
+        <span class="cj-pill">Change PO Status <span class="activity">PoHold</span></span>
+        <span class="cj-pill">Short Close PO <span class="activity">PoScl</span></span>
+      </div>
+      <div class="cj-group">
+        <span class="cj-label">READ &amp; BULK · 2</span>
+        <span class="cj-pill">View PO <span class="activity">PoViw</span></span>
+        <span class="cj-pill">Maintain · bulk <span class="activity">POMtn</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · THE JOURNEY KNOWLEDGE GRAPH (drill-in for Create Direct PO) -->
+<section id="graph">
+  <div class="container">
+    <div class="eyebrow-sm">5 · Drill in: Create Direct PO</div>
+    <h2>One journey, <em>fully unpacked</em>.</h2>
+    <p class="intro">We've fully built one journey so far: <b>Create Direct Purchase Order</b>. It has 7 business steps, 49 slots, 27 splices, and 19 business rules — all woven together. Click any step in the ribbon below to see what it collects, which splices fire there, and which rules it enforces.</p>
+
+    <div class="journey-hero">
+      <div class="jinfo">
+        <h3>Create Direct Purchase Order</h3>
+        <div class="meta">internal activity: PoCrt · entry screen: PoCrtMain · primary API: POST /CreatePO</div>
+      </div>
+      <div class="jstats">
+        <div class="jstat steps"><div class="n">7</div><div class="l">Steps</div></div>
+        <div class="jstat slots"><div class="n">49</div><div class="l">Slots</div></div>
+        <div class="jstat splices"><div class="n">27</div><div class="l">Splices</div></div>
+        <div class="jstat rules"><div class="n">19</div><div class="l">Rules</div></div>
+      </div>
+    </div>
+
+    <div class="ribbon" id="ribbon"></div>
+    <div class="ribbon-hint">↑ click any step to explore ↓</div>
+    <div class="step-detail" id="step-detail"></div>
+  </div>
+</section>
+
+<!-- 5 · SPLICE FAN-OUT -->
+<section>
+  <div class="container">
+    <div class="eyebrow-sm">6 · How One Slot Changes Everything</div>
+    <h2>One choice, <em>three different conversations</em>.</h2>
+    <p class="intro">This is the core idea behind splices. When the user picks a value for <b>po_type</b>, a splice fires. The splice activates new conditional slots — fields the bot needs to ask about, but only on this branch. Three different PO types mean three different downstream conversations.</p>
+
+    <div class="fanout">
+      <div class="fanout-grid">
+        <div class="fo-source">
+          <div class="slabel">Slot</div>
+          <div class="svalue">po_type</div>
+          <div class="svalues">
+            <div class="v-pill">GENERAL</div>
+            <div class="v-pill">CAPITAL</div>
+            <div class="v-pill">CONSIGNMENT</div>
+            <div class="v-pill">DROPSHIP</div>
+          </div>
+        </div>
+
+        <div class="arrow-cell"><div class="a-wrap"><div class="when">if GENERAL</div><div class="arrow">→</div></div></div>
+        <div class="fo-splice" style="opacity:0.45;"><div class="splabel">no splice</div><div class="spname">(baseline)</div></div>
+        <div class="arrow-cell" style="opacity:0.3;"><div class="arrow">→</div></div>
+        <div class="fo-target" style="opacity:0.45;"><div class="tlabel">no extra slots</div></div>
+
+        <div class="arrow-cell"><div class="a-wrap"><div class="when">if CAPITAL</div><div class="arrow">→</div></div></div>
+        <div class="fo-splice"><div class="splabel">Splice fires</div><div class="spname">potype_capital</div></div>
+        <div class="arrow-cell"><div class="arrow">→</div></div>
+        <div class="fo-target">
+          <div class="tlabel">Activates conditional slot</div>
+          <div class="tnames"><span class="slot-tag conditional">proposal_id</span></div>
+        </div>
+
+        <div class="arrow-cell"><div class="a-wrap"><div class="when">if CONSIGN.</div><div class="arrow">→</div></div></div>
+        <div class="fo-splice"><div class="splabel">Splice fires</div><div class="spname">potype_consignment</div></div>
+        <div class="arrow-cell"><div class="arrow">→</div></div>
+        <div class="fo-target">
+          <div class="tlabel">Opens sub-flow</div>
+          <div class="tnames"><span class="slot-tag conditional">consignment_rule</span></div>
+        </div>
+
+        <div class="arrow-cell"><div class="a-wrap"><div class="when">if DROPSHIP</div><div class="arrow">→</div></div></div>
+        <div class="fo-splice"><div class="splabel">Splice fires</div><div class="spname">potype_dropship</div></div>
+        <div class="arrow-cell"><div class="arrow">→</div></div>
+        <div class="fo-target">
+          <div class="tlabel">Activates two conditional slots</div>
+          <div class="tnames">
+            <span class="slot-tag conditional">customer_code</span>
+            <span class="slot-tag conditional">dropship_id</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="leg"><span class="dot" style="background:#98c4b8;"></span>Slot (input)</div>
+        <div class="leg"><span class="dot" style="background:#c5a8f0;"></span>Splice (if-then rule)</div>
+        <div class="leg"><span class="dot" style="background:#b6c994;"></span>Activated conditional slot</div>
+        <div class="leg"><span class="dot" style="background:#f0c896;"></span>Business rule</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · WHERE THE KNOWLEDGE COMES FROM -->
+<section>
+  <div class="container">
+    <div class="eyebrow-sm">7 · Where the knowledge comes from</div>
+    <h2>Five sources for <em>one slot</em>.</h2>
+    <p class="intro">Every slot is grounded in evidence from multiple Ramco artifacts. Take just one — <b>po_type</b> — and look at where each piece of information about it comes from.</p>
+
+    <div class="slot-spotlight">
+      <span class="spill">slot · po_type</span>
+      <p>The kind of PO — General, Capital, Consignment, or Dropship. Determines which conditional fields the bot will ask about later.</p>
+    </div>
+
+    <div class="sources-grid">
+      <div class="source-col api">
+        <div class="sname-h">API Contract</div>
+        <div class="sfile">PO/API/CreatePO3.0.json</div>
+        <div class="extract">CreatePOHeader.Type<br>required: true<br>type: string<br><br>The field MUST be supplied before the API will accept the request.</div>
+      </div>
+      <div class="source-col screen">
+        <div class="sname-h">Screen Control</div>
+        <div class="sfile">PO/ScreenObjects/PO/<br>Pocrt_pocrtmain.htm</div>
+        <div class="extract">&lt;select id="cbopotype"<br>  btsynonym="potypeenum"<br>  tabindex="5"/&gt;<br><br>A dropdown on the main PO screen, populated dynamically.</div>
+      </div>
+      <div class="source-col sp">
+        <div class="sname-h">Validation SP</div>
+        <div class="sfile">PO/SPS/po_common_<br>aprchk_sp.sql</div>
+        <div class="extract">if @potype_tmp = '2'<br>  -- Capital<br>if @potype_tmp = '3'<br>  -- Consignment<br>if @potype_tmp = '4'<br>  -- Dropship<br><br>The EXECUTABLE branch logic.</div>
+      </div>
+      <div class="source-col training">
+        <div class="sname-h">Training Doc</div>
+        <div class="sfile">Direct and Referenced POs<br>Procurement Manual V1.0</div>
+        <div class="extract">"POs can be of types: General, Capital, Consignment, and Dropship."<br><br>"For a CAPITAL PO, a Proposal ID must be entered."<br><br>The BUSINESS meaning + wording.</div>
+      </div>
+      <div class="source-col csv">
+        <div class="sname-h">Service Catalog</div>
+        <div class="sfile">PO/ModelInfo/<br>Service_details_PO.csv</div>
+        <div class="extract">activity: PoCrt<br>ui_name: PoCrtMain<br>task: POMAICRESHIPFRUI<br>spname: pocrmn_sp_podntn<br><br>Which SP populates the dropdown at runtime.</div>
+      </div>
+    </div>
+
+    <p style="color: var(--muted); font-size: 14px; margin-top: 28px; max-width: 760px; line-height: 1.7;">
+      The graph captures all five views and links them. When the user says "Capital", the runtime knows to map that to internal code <code class="mono" style="background:var(--cream-light); padding:1px 7px; border-radius:4px; color: var(--ink-2);">'2'</code>, activate the <code class="mono" style="background:var(--cream-light); padding:1px 7px; border-radius:4px; color: var(--ink-2);">proposal_id</code> slot, fire <code class="mono" style="background:var(--cream-light); padding:1px 7px; border-radius:4px; color: var(--ink-2);">rule_capital_requires_proposal</code> at submission, and explain it back in the training doc's wording — all without exposing any of this to the user.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h3>One graph. One conversation. Zero screens.</h3>
+    <p>The user never sees a screen, a service, a stored procedure, or an API endpoint. They have a conversation in their own words. We carry the rest — built on twelve phases of structured extraction, a 154-node knowledge graph, and a runtime that treats Gemini as a language layer and the graph as the brain.</p>
+    <div class="small">Ramco · Purchase Order Journey Brain · Live chat at <code>http://localhost:5050</code></div>
+  </div>
+</footer>
+
+<!-- MASTER GRAPH MODAL -->
+<div class="modal-overlay" id="master-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div>
+        <h3>PO Master Graph</h3>
+        <span class="modal-sub">all 13 journeys · 5 key statuses · produces / acts_on / transitions edges</span>
+      </div>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-svg-wrap">
+        <svg class="modal-svg" viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="rgba(92, 58, 150, 0.55)"/>
+            </marker>
+            <marker id="arrow-dashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="rgba(122, 120, 114, 0.55)"/>
+            </marker>
+          </defs>
+
+          <!-- TIER 1 · Create journeys (6 boxes) -->
+          <g>
+            <rect class="node-rect create built" x="20"  y="20" width="160" height="64" rx="10"/>
+            <text class="jtname" x="100" y="46" text-anchor="middle">Create Direct PO</text>
+            <text class="jtsmall" x="100" y="64" text-anchor="middle">PoCrt · fully built</text>
+            <text x="100" y="78" text-anchor="middle" style="font-size:9px; fill:#5c3a96; font-weight:600;">★</text>
+
+            <rect class="node-rect create" x="195" y="20" width="150" height="64" rx="10"/>
+            <text class="jtname" x="270" y="50" text-anchor="middle">From Quotation</text>
+            <text class="jtsmall" x="270" y="68" text-anchor="middle">PoCrtQtn</text>
+
+            <rect class="node-rect create" x="360" y="20" width="150" height="64" rx="10"/>
+            <text class="jtname" x="435" y="50" text-anchor="middle">From PR</text>
+            <text class="jtsmall" x="435" y="68" text-anchor="middle">PoCrt + coverage</text>
+
+            <rect class="node-rect create" x="525" y="20" width="150" height="64" rx="10"/>
+            <text class="jtname" x="600" y="50" text-anchor="middle">From Sale Order</text>
+            <text class="jtsmall" x="600" y="68" text-anchor="middle">PoCrtSo</text>
+
+            <rect class="node-rect create" x="690" y="20" width="150" height="64" rx="10"/>
+            <text class="jtname" x="765" y="50" text-anchor="middle">From Tender</text>
+            <text class="jtsmall" x="765" y="68" text-anchor="middle">PoCrtTen</text>
+
+            <rect class="node-rect create" x="855" y="20" width="150" height="64" rx="10"/>
+            <text class="jtname" x="930" y="50" text-anchor="middle">Copy &amp; Create</text>
+            <text class="jtsmall" x="930" y="68" text-anchor="middle">PoCopy</text>
+          </g>
+
+          <!-- TIER 2 · DRAFT status pill -->
+          <rect class="status-rect" x="420" y="155" width="240" height="46" rx="23"/>
+          <text class="jtname on-status" x="540" y="184" text-anchor="middle">DRAFT</text>
+
+          <!-- Edges Tier 1 → Draft (6 converging curves) -->
+          <path class="edge solid" d="M 100,84 C 100,120 540,130 540,155" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 270,84 C 270,120 540,130 540,155"/>
+          <path class="edge solid" d="M 435,84 C 435,120 540,130 540,155"/>
+          <path class="edge solid" d="M 600,84 C 600,120 540,130 540,155"/>
+          <path class="edge solid" d="M 765,84 C 765,120 540,130 540,155"/>
+          <path class="edge solid" d="M 930,84 C 930,120 540,130 540,155"/>
+          <text class="edge-label" x="660" y="116">produces ↓</text>
+
+          <!-- TIER 3 · Edit (left) and Approve (right) -->
+          <rect class="node-rect act" x="160" y="240" width="160" height="60" rx="10"/>
+          <text class="jtname" x="240" y="266" text-anchor="middle">Edit PO</text>
+          <text class="jtsmall" x="240" y="284" text-anchor="middle">PoEdt</text>
+
+          <rect class="node-rect act" x="780" y="240" width="160" height="60" rx="10"/>
+          <text class="jtname" x="860" y="266" text-anchor="middle">Approve PO</text>
+          <text class="jtsmall" x="860" y="284" text-anchor="middle">PoApp</text>
+
+          <!-- Edges Draft ↔ Edit (bidir) -->
+          <path class="edge bidir" d="M 420,180 C 360,180 320,220 320,240" marker-end="url(#arrow-solid)"/>
+          <path class="edge bidir" d="M 240,240 C 240,210 380,200 420,200" marker-end="url(#arrow-solid)"/>
+          <text class="edge-label" x="305" y="216">edit ↔ resubmit</text>
+
+          <!-- Edge Draft → Approve -->
+          <path class="edge solid" d="M 660,180 C 720,180 780,210 780,240" marker-end="url(#arrow-solid)"/>
+          <text class="edge-label" x="700" y="216">acts on</text>
+
+          <!-- TIER 4 · AUTHORIZED status pill -->
+          <rect class="status-rect" x="420" y="355" width="240" height="46" rx="23"/>
+          <text class="jtname on-status" x="540" y="384" text-anchor="middle">AUTHORIZED</text>
+
+          <!-- Edge Approve → Authorized -->
+          <path class="edge solid" d="M 860,300 C 860,330 660,378 660,378" marker-end="url(#arrow-solid)"/>
+          <text class="edge-label" x="730" y="340">transitions →</text>
+
+          <!-- TIER 5 · Amend | Change Status | Short Close -->
+          <rect class="node-rect act" x="60" y="450" width="160" height="60" rx="10"/>
+          <text class="jtname" x="140" y="476" text-anchor="middle">Amend PO</text>
+          <text class="jtsmall" x="140" y="494" text-anchor="middle">PoAmnd</text>
+
+          <rect class="node-rect act" x="320" y="450" width="180" height="60" rx="10"/>
+          <text class="jtname" x="410" y="476" text-anchor="middle">Change PO Status</text>
+          <text class="jtsmall" x="410" y="494" text-anchor="middle">PoHold</text>
+
+          <rect class="node-rect act" x="580" y="450" width="160" height="60" rx="10"/>
+          <text class="jtname" x="660" y="476" text-anchor="middle">Short Close PO</text>
+          <text class="jtsmall" x="660" y="494" text-anchor="middle">PoScl</text>
+
+          <!-- Edges Authorized → these 3 -->
+          <path class="edge solid" d="M 470,401 C 400,420 220,430 140,450" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 540,401 C 540,420 410,430 410,450" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 610,401 C 660,420 660,440 660,450" marker-end="url(#arrow-solid)"/>
+
+          <!-- Amend re-approval loop back to Approve -->
+          <path class="edge dashed" d="M 220,470 C 280,440 700,360 800,300" marker-end="url(#arrow-dashed)"/>
+          <text class="edge-label" x="380" y="420" style="fill: rgba(122, 120, 114, 0.7);">re-approval</text>
+
+          <!-- TIER 6 · Terminal statuses (small pills) -->
+          <rect class="status-rect term" x="40"  y="570" width="100" height="30" rx="15"/>
+          <text class="jtname on-term" x="90"  y="589" text-anchor="middle">Amended</text>
+
+          <rect class="status-rect term" x="160" y="570" width="80"  height="30" rx="15"/>
+          <text class="jtname on-term" x="200" y="589" text-anchor="middle">Held</text>
+
+          <rect class="status-rect term" x="260" y="570" width="100" height="30" rx="15"/>
+          <text class="jtname on-term" x="310" y="589" text-anchor="middle">Cancelled</text>
+
+          <rect class="status-rect term" x="380" y="570" width="110" height="30" rx="15"/>
+          <text class="jtname on-term" x="435" y="589" text-anchor="middle">Terminated</text>
+
+          <rect class="status-rect term" x="540" y="570" width="120" height="30" rx="15"/>
+          <text class="jtname on-term" x="600" y="589" text-anchor="middle">Short Closed</text>
+
+          <!-- Edges Tier 5 → Tier 6 terminals -->
+          <path class="edge solid" d="M 140,510 C 100,540 95,560 90,570" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 380,510 C 320,540 220,560 200,570" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 420,510 C 360,540 320,560 310,570" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 450,510 C 440,540 440,560 435,570" marker-end="url(#arrow-solid)"/>
+          <path class="edge solid" d="M 660,510 C 640,540 615,560 600,570" marker-end="url(#arrow-solid)"/>
+
+          <!-- SIDE PANEL · View PO + Maintain Bulk -->
+          <rect class="node-rect read" x="780" y="450" width="160" height="60" rx="10"/>
+          <text class="jtname" x="860" y="476" text-anchor="middle">View PO</text>
+          <text class="jtsmall" x="860" y="494" text-anchor="middle">PoViw · universal entry</text>
+
+          <rect class="node-rect read" x="780" y="540" width="160" height="60" rx="10"/>
+          <text class="jtname" x="860" y="566" text-anchor="middle">Maintain (bulk)</text>
+          <text class="jtsmall" x="860" y="584" text-anchor="middle">POMtn · power-user</text>
+
+          <!-- View PO dotted lines to both statuses -->
+          <path class="edge dashed" d="M 780,470 C 720,420 700,300 660,200" marker-end="url(#arrow-dashed)"/>
+          <path class="edge dashed" d="M 780,490 C 720,460 700,420 660,395" marker-end="url(#arrow-dashed)"/>
+          <text class="edge-label" x="690" y="450" style="fill: rgba(122, 120, 114, 0.7);">reads any status</text>
+
+          <!-- Legend -->
+          <g transform="translate(960, 30)">
+            <text x="0" y="0" style="font-size:9px; fill:var(--muted); text-transform:uppercase; letter-spacing:0.08em; font-family:'JetBrains Mono', monospace; font-weight:600;">Legend</text>
+            <rect x="0" y="10" width="18" height="10" rx="3" class="node-rect create"/>
+            <text x="24" y="19" style="font-size:10px; fill: var(--ink-2);">Create journey</text>
+            <rect x="0" y="28" width="18" height="10" rx="3" class="node-rect act"/>
+            <text x="24" y="37" style="font-size:10px; fill: var(--ink-2);">Action journey</text>
+            <rect x="0" y="46" width="18" height="10" rx="3" class="node-rect read"/>
+            <text x="24" y="55" style="font-size:10px; fill: var(--ink-2);">Read journey</text>
+            <rect x="0" y="64" width="18" height="10" rx="5" class="status-rect"/>
+            <text x="24" y="73" style="font-size:10px; fill: var(--ink-2);">Open status</text>
+            <rect x="0" y="82" width="18" height="10" rx="5" class="status-rect term"/>
+            <text x="24" y="91" style="font-size:10px; fill: var(--ink-2);">Terminal status</text>
+          </g>
+        </svg>
+      </div>
+
+      <div style="margin-top: 20px; padding: 16px 20px; background: var(--cream-light); border-radius: 12px; font-size: 13px; color: var(--ink-2); line-height: 1.65;">
+        <strong style="font-family: 'Fraunces', serif; font-weight: 600; color: var(--ink); display: block; margin-bottom: 6px;">How to read this graph</strong>
+        <b>Solid arrows</b> = journey acts on a status, or transitions one status to another (e.g. Approve PO transitions Draft → Authorized). <b>Dashed arrows</b> = optional / universal connections (View PO reads any status; Amend's re-approval loop). <b>The starred Create Direct PO box</b> is the only journey fully built — clicking it on the main page drills into its 7 business steps, 49 slots, and 27 splices.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slot-popover" id="popover">
+  <div class="pname" id="po-name"></div>
+  <div class="prow"><b>Class</b><span id="po-class"></span></div>
+  <div class="prow"><b>Kind</b><span id="po-kind"></span></div>
+  <div class="prow"><b>API binding</b><span id="po-api"></span></div>
+  <div class="prow"><b>Screen control</b><span id="po-screen"></span></div>
+  <div class="prow"><b>Bot might ask</b><span id="po-ask" style="font-style: italic;"></span></div>
+</div>
+
+<script>
+// =========================================================================
+// CONVERSATION SCRIPT — 6 baked turns from a real demo run
+// =========================================================================
+const TURNS = [
+  { user: null, bot: "Hi — what can I help you with on Purchase Orders?", state: null,
+    explanation: { title: "Turn 0 · Idle",
+      body: "The bot is waiting. The runtime has no journey selected, no slots filled, no splices fired." } },
+  { user: "I need to order 50 industrial pumps from Acme Corp by next month, shipping straight to our Mumbai client",
+    bot: "Got it — I'll start a dropship purchase order for 50 industrial pumps from Acme for your client in Mumbai. Which currency should I use?",
+    state: { journey: "create_direct_po", step: "collect_header_details", recipe: "intent_routing", llm: true,
+      slots: { po_type: "DROPSHIP", supplier_code: "Acme Corp", item_code: "industrial pumps", quantity: 50, need_date: "next month" },
+      newSlots: ["po_type", "supplier_code", "item_code", "quantity", "need_date"],
+      splices: ["route_create_disambiguation", "potype_dropship"],
+      newSplices: ["route_create_disambiguation", "potype_dropship"],
+      conditional: ["customer_code", "dropship_id"], retrieved: 5 },
+    explanation: { title: "Turn 1 · Five slots filled from one sentence",
+      body: "The retriever called Gemini once to classify intent and extract slot values. From a single natural sentence it inferred po_type = DROPSHIP (because 'shipping to our client' implies dropship), plus supplier, item, quantity, and need-date. The dropship splice activated two conditional slots (customer_code, dropship_id) we'll need before submission." } },
+  { user: "Use INR and the standard numbering series PO-2026",
+    bot: "Got it — INR and the PO-2026 series. What date should I use for the PO?",
+    state: { journey: "create_direct_po", step: "collect_header_details", recipe: "slot_fill_continuation", llm: true,
+      slots: { po_type: "DROPSHIP", supplier_code: "Acme Corp", item_code: "industrial pumps", quantity: 50, need_date: "next month", currency: "INR", numbering_series: "PO-2026" },
+      newSlots: ["currency", "numbering_series"], splices: ["route_create_disambiguation", "potype_dropship"], newSplices: [],
+      conditional: ["customer_code", "dropship_id"], retrieved: 3 },
+    explanation: { title: "Turn 2 · Two more slots, in-journey",
+      body: "Now we're inside the journey. The runtime correctly recognized 'PO-2026' as a numbering-series name (not a reference to another PO) because we're mid-create. The retriever called Gemini to pull two more slots out of the user's reply." } },
+  { user: "Customer is Mumbai Industries Ltd, shipping to their Andheri warehouse",
+    bot: "Got it — Mumbai Industries Ltd as the customer, delivering to Andheri. What date should I put on the PO?",
+    state: { journey: "create_direct_po", step: "collect_header_details", recipe: "slot_fill_continuation", llm: true,
+      slots: { po_type: "DROPSHIP", supplier_code: "Acme Corp", item_code: "industrial pumps", quantity: 50, need_date: "next month", currency: "INR", numbering_series: "PO-2026", customer_code: "Mumbai Industries Ltd", dropship_id: "Andheri warehouse" },
+      newSlots: ["customer_code", "dropship_id"], splices: ["route_create_disambiguation", "potype_dropship"], newSplices: [],
+      conditional: ["customer_code", "dropship_id"], retrieved: 3 },
+    explanation: { title: "Turn 3 · Conditional slots from Turn 1 satisfied",
+      body: "The two conditional slots that got activated by potype_dropship — customer_code and dropship_id — are now both filled from one sentence. The dropship constraint is satisfied." } },
+  { user: "Use UOM EA, cost is 12000 each, PO date is today 2026-05-24, receipt at our Pune plant, schedule is single",
+    bot: "All set. I've created PO/2026/38863 for you in Draft status. Want me to send it for approval, or leave it as Draft for now?",
+    state: { journey: "create_direct_po", step: "create_po", recipe: "slot_fill_continuation", llm: true,
+      slots: { po_type: "DROPSHIP", supplier_code: "Acme Corp", item_code: "industrial pumps", quantity: 50, need_date: "next month", currency: "INR", numbering_series: "PO-2026", customer_code: "Mumbai Industries Ltd", dropship_id: "Andheri warehouse", uom: "EA", cost: 12000, per: 1, po_date: "2026-05-24", receipt_at: "Pune plant", schedule_type: "single" },
+      newSlots: ["uom", "cost", "per", "po_date", "receipt_at", "schedule_type"], splices: ["route_create_disambiguation", "potype_dropship"], newSplices: [],
+      conditional: ["customer_code", "dropship_id"], retrieved: 4, po_number: "PO/2026/38863",
+      plan: { readiness: "warnings", pass: 9, fail: 0, skipped: 9, ops: 2 } },
+    explanation: { title: "Turn 4 · All required slots filled → auto-submit",
+      body: "Six more slots filled in one turn. The runtime detected all required slots were satisfied, advanced deterministically through the remaining steps in one pass, called the Execution Plan Builder, ran 18 preflight rule checks (9 pass, 0 fail, 9 skipped), and submitted: POST /CreatePO + POST /SpecifyDropshipAddress. The PO is live." } },
+  { user: "Leave as draft, thanks",
+    bot: "Done — PO/2026/38863 is in Draft. Tell me when you'd like to send it for approval.",
+    state: { journey: "create_direct_po", step: "create_po", recipe: "terminal", llm: true,
+      slots: { po_type: "DROPSHIP", supplier_code: "Acme Corp", item_code: "industrial pumps", quantity: 50, need_date: "next month", currency: "INR", numbering_series: "PO-2026", customer_code: "Mumbai Industries Ltd", dropship_id: "Andheri warehouse", uom: "EA", cost: 12000, per: 1, po_date: "2026-05-24", receipt_at: "Pune plant", schedule_type: "single" },
+      newSlots: [], splices: ["route_create_disambiguation", "potype_dropship"], newSplices: [],
+      conditional: ["customer_code", "dropship_id"], retrieved: 1, po_number: "PO/2026/38863",
+      plan: { readiness: "warnings", pass: 9, fail: 0, skipped: 9, ops: 2 } },
+    explanation: { title: "Turn 5 · Terminal — handed off to next journey",
+      body: "Journey complete. The runtime knows PO/2026/38863 exists in Draft, and the natural next journey is approve_po. If the user comes back with 'approve it', the runtime routes there with the PO context already populated." } }
+];
+
+let currentTurn = 0;
+const chatEl = document.getElementById('sim-chat');
+const backEl = document.getElementById('sim-back');
+const turnNum = document.getElementById('turn-num');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const resetBtn = document.getElementById('reset-btn');
+const explainBox = document.getElementById('explain');
+
+function renderUpTo(turnIdx) {
+  chatEl.innerHTML = '';
+  if (turnIdx === 0) {
+    chatEl.innerHTML = `<div class="msg bot intro">
+      <div class="who">Bot</div>
+      <div class="bubble">Hi — what can I help you with on Purchase Orders?</div>
+    </div>`;
+  } else {
+    for (let i = 1; i <= turnIdx; i++) {
+      const t = TURNS[i];
+      chatEl.innerHTML += `<div class="msg user"><div class="who">User</div><div class="bubble">${escapeHtml(t.user)}</div></div>`;
+      chatEl.innerHTML += `<div class="msg bot"><div class="who">Bot</div><div class="bubble">${escapeHtml(t.bot)}</div></div>`;
+    }
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }
+  renderBackend(TURNS[turnIdx].state);
+  const exp = TURNS[turnIdx].explanation;
+  explainBox.innerHTML = `<div class="label">${exp.title}</div><div>${exp.body}</div>`;
+  turnNum.textContent = turnIdx;
+  prevBtn.disabled = turnIdx === 0;
+  nextBtn.disabled = turnIdx === TURNS.length - 1;
+}
+
+function renderBackend(state) {
+  if (!state) {
+    backEl.innerHTML = `
+      <div class="bk-section"><h4>Conversation state</h4>
+        <div class="bk-card"><div class="placeholder">Waiting for first user message…</div></div></div>
+      <div class="bk-section"><h4>What just happened</h4>
+        <div class="bk-card"><div class="placeholder">Click "Next" to play the conversation.</div></div></div>`;
+    return;
+  }
+  const slotEntries = Object.entries(state.slots || {});
+  const newSlots = new Set(state.newSlots || []);
+  const newSplices = new Set(state.newSplices || []);
+  const slotsHtml = slotEntries.length
+    ? `<div class="kv">${slotEntries.map(([k, v]) =>
+        `<div class="k ${newSlots.has(k) ? 'new-flash' : ''}">${k}</div><div class="v ${newSlots.has(k) ? 'new-flash' : ''}">${escapeHtml(JSON.stringify(v))}</div>`
+      ).join('')}</div>`
+    : `<div class="placeholder">No slots filled yet.</div>`;
+  const splicesHtml = (state.splices || []).length
+    ? state.splices.map(s => `<span class="badge splice ${newSplices.has(s) ? 'new-flash' : ''}">${s.replace('splice:', '')}</span>`).join('')
+    : `<div class="placeholder">No splices fired.</div>`;
+  const conditionalHtml = (state.conditional || []).length
+    ? state.conditional.map(s => `<span class="badge slot">${s}${state.slots[s] ? ' ✓' : ' (pending)'}</span>`).join('')
+    : `<div class="placeholder">No conditional slots active.</div>`;
+  const planHtml = state.plan ? `
+    <div class="bk-section">
+      <h4>Execution plan</h4>
+      <div class="bk-card">
+        <div class="kv">
+          <div class="k">readiness</div><div class="v"><span class="badge llm">${state.plan.readiness}</span></div>
+          <div class="k">preflight</div><div class="v">${state.plan.pass} pass · ${state.plan.fail} fail · ${state.plan.skipped} skipped</div>
+          <div class="k">API calls</div><div class="v">${state.plan.ops} ops chained</div>
+          <div class="k">PO number</div><div class="v">${state.po_number}</div>
+        </div>
+      </div>
+    </div>` : '';
+  backEl.innerHTML = `
+    <div class="bk-section"><h4>Conversation state</h4>
+      <div class="bk-card">
+        <div class="kv">
+          <div class="k">journey</div><div class="v">${state.journey || '—'}</div>
+          <div class="k">step</div><div class="v">${state.step || '—'}</div>
+          <div class="k">recipe</div><div class="v"><span class="badge recipe">${state.recipe || '—'}</span></div>
+          <div class="k">llm used</div><div class="v"><span class="badge ${state.llm ? 'llm' : 'det'}">${state.llm ? 'yes (semantics)' : 'deterministic'}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bk-section"><h4>Filled slots <span style="color:var(--muted-2); font-weight:400;">(${slotEntries.length}${newSlots.size ? ', ' + newSlots.size + ' new' : ''})</span></h4>
+      <div class="bk-card">${slotsHtml}</div></div>
+    <div class="bk-section"><h4>Conditional slots activated by splices</h4>
+      <div class="bk-card">${conditionalHtml}</div></div>
+    <div class="bk-section"><h4>Fired splices</h4>
+      <div class="bk-card">${splicesHtml}</div></div>
+    <div class="bk-section"><h4>Retrieved graph nodes</h4>
+      <div class="bk-card">${state.retrieved} node${state.retrieved === 1 ? '' : 's'} returned (journey + step + slots + splices + evidence)</div></div>
+    ${planHtml}`;
+  backEl.scrollTop = 0;
+}
+nextBtn.addEventListener('click', () => { if (currentTurn < TURNS.length - 1) { currentTurn++; renderUpTo(currentTurn); } });
+prevBtn.addEventListener('click', () => { if (currentTurn > 0) { currentTurn--; renderUpTo(currentTurn); } });
+resetBtn.addEventListener('click', () => { currentTurn = 0; renderUpTo(0); });
+renderUpTo(0);
+
+// =========================================================================
+// JOURNEY GRAPH — step ribbon + step detail
+// =========================================================================
+const STEPS = [
+  { id: "confirm_po_source", num: 1, name: "Confirm Source",
+    business: "Confirm that the PO is being created directly, without quotation, tender, PR, or sale-order reference.",
+    conversation: "Just to confirm — you're creating this from scratch, right? Not converting a quotation, PR, sale order, or tender?",
+    slots: [],
+    splices: [{ name: "user_changes_mind_to_referenced", trigger: "user mentions quote/PR/SO/tender", effect: "Reroute to that sibling journey, carrying forward filled slots", activates: [] }],
+    rules: [] },
+  { id: "select_po_type", num: 2, name: "PO Type",
+    business: "Identify the PO type — General, Capital, Dropship, or Consignment. The choice determines which conditional fields are required later in the conversation.",
+    conversation: "What kind of PO — a normal supply order (General), a capital purchase (Capital), a consignment, or going direct to a customer (Dropship)?",
+    slots: [{ id: "po_type", required: true }],
+    splices: [
+      { name: "potype_capital",     trigger: "po_type == CAPITAL", effect: "Capital POs need a funding proposal. Activates a new required slot.", activates: ["proposal_id"] },
+      { name: "potype_consignment", trigger: "po_type == CONSIGNMENT", effect: "Switches to the consignment validation path; stock is owned by the supplier until consumed.", activates: ["consignment_rule"] },
+      { name: "potype_dropship",    trigger: "po_type == DROPSHIP", effect: "Activates two slots and opens the SpecifyDropshipAddress sub-flow.", activates: ["customer_code", "dropship_id"] } ],
+    rules: [
+      { name: "rule_capital_requires_proposal", stmt: "A Capital PO must reference an approved Asset Proposal." },
+      { name: "rule_dropship_requires_customer", stmt: "A Dropship PO must reference a Customer and a Dropship address." } ] },
+  { id: "collect_header_details", num: 3, name: "Header Details",
+    business: "Collect basic PO information — supplier, PO date, currency, numbering preference, ship-from, plus optional folder, buyer, and the Imports/LOI/Hold flags.",
+    conversation: "Who's the supplier? What currency? Auto-generate the PO number or assign manually?",
+    slots: [
+      { id: "supplier_code", required: true }, { id: "currency", required: true }, { id: "exchange_rate", required: true },
+      { id: "po_date", required: true }, { id: "numbering_series", required: true }, { id: "po_no_manual" }, { id: "ship_from_id" },
+      { id: "buyer" }, { id: "folder" }, { id: "imports_flag" }, { id: "hold_flag" } ],
+    splices: [
+      { name: "manual_numbering",   trigger: "numbering_series == '~MANUAL~'", effect: "User-typed PO No. needed.", activates: ["po_no_manual"] },
+      { name: "imports_flag_on",    trigger: "imports_flag == true", effect: "Import-related TCD slots become mandatory.", activates: ["import_tcd_codes"] },
+      { name: "hold_flag_blocks_approval", trigger: "hold_flag == true", effect: "PO will skip the approval workflow.", activates: [] } ],
+    rules: [
+      { name: "rule_manual_numbering_requires_po_no", stmt: "Manual numbering requires a unique PO No." },
+      { name: "rule_supplier_must_be_active", stmt: "Supplier must exist in master and be active." },
+      { name: "rule_exchange_rate_positive", stmt: "Exchange rate must be > 0." },
+      { name: "rule_po_date_constraints", stmt: "PO Date defaults to today; must be on or before Approval Date." } ] },
+  { id: "collect_line_items", num: 4, name: "Line Items",
+    business: "Collect the items or services to order — quantity, cost, UOM, need date, warehouse, accounting unit per line.",
+    conversation: "What are you ordering? Item, quantity, need-by date — I'll fill defaults for cost and warehouse.",
+    slots: [
+      { id: "item_code", required: true }, { id: "quantity", required: true }, { id: "uom", required: true },
+      { id: "cost", required: true }, { id: "per", required: true }, { id: "need_date", required: true },
+      { id: "schedule_type", required: true }, { id: "receipt_at", required: true },
+      { id: "warehouse_code" }, { id: "ac_usage" }, { id: "cc_usage" }, { id: "adhoc_item_class" } ],
+    splices: [
+      { name: "non_stockable_line", trigger: "item.stockability == non_stockable", effect: "Activates account/cost-center attribution.", activates: ["ac_usage", "cc_usage"] },
+      { name: "stockable_line",     trigger: "item.stockability == stockable", effect: "Stockable items need a receiving warehouse.", activates: ["warehouse_code"] },
+      { name: "adhoc_item_fallback", trigger: "item not in master AND user confirms adhoc", effect: "Skip master lookup; classify line as Adhoc.", activates: ["adhoc_item_class"] } ],
+    rules: [
+      { name: "rule_quantity_positive", stmt: "Line quantity must be greater than zero." },
+      { name: "rule_cost_non_negative", stmt: "Line cost must be ≥ 0 (zero allowed for samples)." },
+      { name: "rule_need_date_geq_po_date", stmt: "Need date must be on or after the PO Date." },
+      { name: "rule_item_master_or_adhoc", stmt: "Every line item must exist in master OR be classified as adhoc." },
+      { name: "rule_non_stockable_requires_ac_cc_usage", stmt: "Non-stockable lines require AC Usage + CC Usage." },
+      { name: "rule_stockable_requires_warehouse", stmt: "Stockable lines require a receiving warehouse." } ] },
+  { id: "resolve_conditional_details", num: 5, name: "Conditional Details",
+    business: "Collect or default conditional details based on splices that fired earlier (proposal for Capital, customer + ship-to for Dropship) and electives (budget, terms, taxes, quality).",
+    conversation: "A few extras based on what you've told me — skip anything that doesn't apply.",
+    slots: [
+      { id: "proposal_id" }, { id: "customer_code" }, { id: "dropship_id" }, { id: "budget_id" },
+      { id: "payment_terms" }, { id: "tcd_details" }, { id: "quality_attributes" },
+      { id: "pr_coverage" }, { id: "so_coverage" }, { id: "notes_text" } ],
+    splices: [
+      { name: "gate_budget",        trigger: "user signal OR offered", effect: "Elective: offer budget tagging.", activates: [] },
+      { name: "gate_payment_terms", trigger: "user signal OR offered", effect: "Elective: ask about pay term, mode, pay-to. Default the other 22 fields.", activates: [] },
+      { name: "gate_quality",       trigger: "user signal OR offered", effect: "Elective: define quality specs for receipt inspection.", activates: [] },
+      { name: "gate_so_coverage",   trigger: "user mentions SO", effect: "Elective: link to a Sale Order.", activates: [] } ],
+    rules: [
+      { name: "rule_capital_requires_proposal", stmt: "If Capital, proposal_id must be set before submission." },
+      { name: "rule_dropship_requires_customer", stmt: "If Dropship, customer_code + dropship_id must be set." },
+      { name: "rule_budget_must_have_headroom", stmt: "If budget tagged, must have remaining headroom for the PO value." } ] },
+  { id: "create_po", num: 6, name: "Create",
+    business: "Submit the PO. The system assigns a PO number and chains relevant sub-flow API calls (SpecifyDropship, SpecifyBudget, etc.).",
+    conversation: "Here's the PO: {supplier}, {type}, {items} totaling {amount}, by {need_date}. Send it?",
+    slots: [],
+    splices: [
+      { name: "validation_failure_translation",        trigger: "any submit API returns an error", effect: "Translate the technical message into plain language; offer a fix.", activates: [] },
+      { name: "validation_failure_uniqueness",         trigger: "duplicate PO No. (manual numbering)", effect: "Ask user to pick a different number or auto-generate.", activates: [] },
+      { name: "validation_failure_master_data_missing", trigger: "entity lookup returns not-found", effect: "Per-entity recovery (search differently, create master, etc.).", activates: [] } ],
+    rules: [
+      { name: "rule_required_header_fields_complete", stmt: "All 7 required CreatePOHeader fields must be filled before submission." },
+      { name: "rule_required_line_fields_complete_per_line", stmt: "All 9 required CreatePODetails fields must be filled per line." } ] },
+  { id: "decide_approval", num: 7, name: "Approve?",
+    business: "Ask whether to submit for approval immediately or leave the PO in Draft for later review.",
+    conversation: "PO {number} is in Draft. Send for approval now, or leave as Draft?",
+    slots: [{ id: "approval_choice", required: true }],
+    splices: [
+      { name: "terminal_create_and_approve",      trigger: "approval == 'approve_now' AND user.has_authority", effect: "Approve in one step — PO goes directly to Authorized.", activates: [] },
+      { name: "terminal_approve_lacks_authority", trigger: "approval == 'approve_now' AND NOT authority", effect: "Hand off to workflow approver or leave as Draft.", activates: [] },
+      { name: "terminal_save_as_draft",           trigger: "approval == 'leave_as_draft' OR hold_flag", effect: "Journey ends. Suggest approve_po as the next journey.", activates: [] } ],
+    rules: [
+      { name: "rule_hold_prevents_approval", stmt: "If hold_flag was set, PO can't enter approval until released." },
+      { name: "rule_approval_role_match", stmt: "Only an approver with the matching workflow role can authorize." } ] }
+];
+
+const SLOT_DETAIL = {
+  po_type:        { class: "required",     kind: "enum (GENERAL/CAPITAL/CONSIGNMENT/DROPSHIP)", api: "CreatePOHeader.Type",        screen: "PoCrtMain.cbopotype",         ask: "What kind of PO?" },
+  supplier_code:  { class: "required",     kind: "entity_reference",        api: "CreatePOHeader.SupplierCode",                    screen: "PoCrtMain.txtsuppliercode",   ask: "Who's the supplier?" },
+  currency:       { class: "required",     kind: "enum (currency)",          api: "CreatePOHeader.Currency",                       screen: "PoCrtMain.cbocurrency",       ask: "Which currency?" },
+  exchange_rate:  { class: "defaultable",  kind: "number",                   api: "CreatePOHeader.ExchangeRate",                   screen: "PoCrtMain.txtexchangerate",   ask: "(defaults to system-recommended)" },
+  po_date:        { class: "required",     kind: "date",                     api: "CreatePOHeader.PoDate",                         screen: "PoCrtMain.txtpodate",         ask: "What date? (defaults to today)" },
+  numbering_series: { class: "required",   kind: "enum",                     api: "CreatePOHeader.NumberingSeries",                screen: "PoCrtMain.cbonumberingseries",ask: "Auto-generate, or assign manually?" },
+  po_no_manual:   { class: "conditional",  kind: "string",                   api: "CreatePOHeader.Ponohdr",                        screen: "PoCrtMain.txtpono",           ask: "What PO number should I use?" },
+  ship_from_id:   { class: "optional",     kind: "enum",                     api: "CreatePOHeader.ShipFromId",                     screen: "PoCrtMain.cmbshipfromid",     ask: "Which supplier address?" },
+  buyer:          { class: "optional",     kind: "entity_reference",         api: "CreatePOHeader.Buyer",                          screen: "PoCrtMain.cbobuyer",          ask: "(optional — tag a buyer?)" },
+  folder:         { class: "optional",     kind: "enum",                     api: "CreatePOHeader.Folder",                         screen: "PoCrtMain.cbopofolder",       ask: "(optional — folder code?)" },
+  imports_flag:   { class: "optional",     kind: "boolean",                  api: "CreatePOHeader.Imports",                        screen: "PoCrtMain.chkimports",        ask: "Is this an import PO?" },
+  hold_flag:      { class: "optional",     kind: "boolean",                  api: "CreatePOHeader.Hold",                           screen: "PoCrtMain.chkhold",           ask: "(optional — mark as held?)" },
+  item_code:      { class: "required",     kind: "entity_reference",         api: "CreatePODetails[].ItemCode",                    screen: "PoCrtMain (line grid)",       ask: "What are you ordering?" },
+  quantity:       { class: "required",     kind: "number",                   api: "CreatePODetails[].Quantity",                    screen: "PoCrtMain (line grid)",       ask: "How many?" },
+  uom:            { class: "required",     kind: "enum",                     api: "CreatePODetails[].Uom",                         screen: "PoCrtMain (line grid)",       ask: "(defaults from item master)" },
+  cost:           { class: "required",     kind: "number",                   api: "CreatePODetails[].Cost",                        screen: "PoCrtMain (line grid)",       ask: "(defaults to last-purchase cost)" },
+  per:            { class: "required",     kind: "number",                   api: "CreatePODetails[].Per",                         screen: "PoCrtMain (line grid)",       ask: "Cost per how many units" },
+  need_date:      { class: "required",     kind: "date",                     api: "CreatePODetails[].NeedDate",                    screen: "PoCrtMain (line grid)",       ask: "When do you need this by?" },
+  schedule_type:  { class: "required",     kind: "enum (SINGLE/MULTIPLE)",   api: "CreatePODetails[].ScheduleType",                screen: "PoCrtMain (line grid)",       ask: "Single delivery or split schedule?" },
+  receipt_at:     { class: "required",     kind: "enum",                     api: "CreatePODetails[].ReceiptAt",                   screen: "PoCrtMain.cboreceiptat",      ask: "Which plant location is receiving?" },
+  warehouse_code: { class: "conditional",  kind: "enum",                     api: "CreatePODetails[].WarehouseCode",               screen: "PoCrtMain (line grid)",       ask: "Which warehouse?" },
+  ac_usage:       { class: "conditional",  kind: "enum",                     api: "CreatePODetails[].AcUsage",                     screen: "PoCrtMain.cboacusage",        ask: "(non-stockable: which account group?)" },
+  cc_usage:       { class: "conditional",  kind: "enum",                     api: "CreatePODetails[].CcUsage",                     screen: "PoCrtMain.cboccusage",        ask: "(non-stockable: which cost center?)" },
+  adhoc_item_class: { class: "conditional", kind: "enum",                    api: "CreatePODetails[].AdhocItemClass",              screen: "—",                            ask: "Material / Service / General?" },
+  proposal_id:    { class: "conditional",  kind: "entity_reference",         api: "(via Specify sub-flow)",                        screen: "PoCrtMain.txtproposalid",     ask: "Which asset proposal funds this?" },
+  customer_code:  { class: "conditional",  kind: "entity_reference",         api: "SpecifyDropShipDetails.CustomerCode",           screen: "PoCrtDrpshp.txtcustomercode", ask: "Who's the end customer?" },
+  dropship_id:    { class: "conditional",  kind: "entity_reference",         api: "SpecifyDropShipDetails.DropshipId",             screen: "PoCrtDrpshp.txtdropshipid",   ask: "Which of the customer's addresses?" },
+  budget_id:      { class: "optional",     kind: "entity_reference",         api: "SpecifyBudgetDetails.BudgetId",                 screen: "PoCrtBud.txtbudgetid",        ask: "Tag to a purchase budget?" },
+  payment_terms:  { class: "optional",     kind: "object (compound)",        api: "SpecifyTerms (27 fields)",                      screen: "PoCrtTrm",                    ask: "Pay term, mode, pay-to override?" },
+  tcd_details:    { class: "optional",     kind: "array",                    api: "SpecifyTCD + SpecifyOtherTCD",                  screen: "PoCrtTcd / PoCrtTcdoth",      ask: "Any taxes, charges, discounts?" },
+  quality_attributes: { class: "optional", kind: "array",                    api: "SpecifyQualityAttributes",                      screen: "PoCrtQlty",                   ask: "Quality specs for receipt?" },
+  pr_coverage:    { class: "conditional",  kind: "array",                    api: "SpecifyPOPRCoverage",                           screen: "PoCrtPrCov",                  ask: "Cover an open PR?" },
+  so_coverage:    { class: "conditional",  kind: "array",                    api: "SpecifyPOSOCoverage",                           screen: "PoCrtSoCov",                  ask: "Fulfilling a Sale Order?" },
+  notes_text:     { class: "optional",     kind: "string",                   api: "(notes attachment)",                            screen: "PoCrtNotes",                  ask: "Any notes?" },
+  approval_choice:{ class: "transient",    kind: "enum (approve/draft)",     api: "(routes terminal API call)",                    screen: "—",                            ask: "Approve now or leave as Draft?" },
+  consignment_rule: { class: "conditional",kind: "enum",                     api: "TermsDetails.ConsignmentRule",                  screen: "PoCrtTrm",                    ask: "When does stock become ours?" },
+  import_tcd_codes: { class: "conditional",kind: "array",                    api: "SpecifyTCD (customs/freight/insurance)",        screen: "PoCrtTcd",                    ask: "Customs, freight, insurance details?" }
+};
+
+let activeIdx = 1;
+const ribbonEl = document.getElementById('ribbon');
+const detailEl = document.getElementById('step-detail');
+
+function renderRibbon() {
+  ribbonEl.innerHTML = STEPS.map((s, i) => `
+    <div class="rstep ${i === activeIdx ? 'active' : ''}" data-idx="${i}">
+      <div class="rnum">Step ${s.num}</div>
+      <div class="rname">${s.name}</div>
+      <div class="rcount">${s.slots.length} slot · ${s.splices.length} splice · ${s.rules.length} rule</div>
+    </div>`).join('');
+  ribbonEl.querySelectorAll('.rstep').forEach(el => el.addEventListener('click', () => {
+    activeIdx = parseInt(el.dataset.idx, 10);
+    renderRibbon();
+    renderDetail();
+  }));
+}
+
+function renderDetail() {
+  const s = STEPS[activeIdx];
+  detailEl.innerHTML = `
+    <header>
+      <div class="pill">Step ${s.num}</div>
+      <h4 class="serif">${s.name}</h4>
+      <div class="step-id">${s.id}</div>
+    </header>
+    <div class="vgrid">
+      <div class="vcard"><div class="vlabel">Business view</div><p>${s.business}</p></div>
+      <div class="vcard convo"><div class="vlabel">Conversation view</div><p>${s.conversation}</p></div>
+    </div>
+    <div class="three">
+      <div class="col slots-c">
+        <div class="col-head"><span class="ctitle">Slots collected</span><span class="count">${s.slots.length}</span></div>
+        <div>${s.slots.length
+          ? s.slots.map(sl => `<span class="slot-tag" data-slot="${sl.id}">${sl.id}</span>`).join(' ')
+          : '<div style="color:var(--muted-2); font-size:13px; font-style:italic;">No slots at this step — confirmation or terminal step.</div>'}</div>
+      </div>
+      <div class="col splices-c">
+        <div class="col-head"><span class="ctitle">Splices that can fire</span><span class="count">${s.splices.length}</span></div>
+        ${s.splices.map(sp => `
+          <div class="splice-card-inline">
+            <div class="sname">${sp.name}</div>
+            <div class="strigger">trigger: <code>${sp.trigger}</code></div>
+            <div class="seffect">${sp.effect}</div>
+            ${sp.activates && sp.activates.length
+              ? `<div class="activates">${sp.activates.map(a => `<span class="slot-tag conditional" data-slot="${a}">${a}</span>`).join(' ')}</div>` : ''}
+          </div>`).join('')}
+      </div>
+      <div class="col rules-c">
+        <div class="col-head"><span class="ctitle">Business rules</span><span class="count">${s.rules.length}</span></div>
+        ${s.rules.length
+          ? s.rules.map(r => `<div class="rule-card-inline"><div class="rname">${r.name}</div><div class="rstmt">${r.stmt}</div></div>`).join('')
+          : '<div style="color:var(--muted-2); font-size:13px; font-style:italic;">No specific rules at this step.</div>'}
+      </div>
+    </div>`;
+  attachSlotHover();
+}
+
+const popover = document.getElementById('popover');
+function attachSlotHover() {
+  document.querySelectorAll('.slot-tag[data-slot]').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      const sid = el.dataset.slot;
+      const d = SLOT_DETAIL[sid];
+      if (!d) return;
+      document.getElementById('po-name').textContent = sid;
+      document.getElementById('po-class').textContent = d.class;
+      document.getElementById('po-kind').textContent = d.kind;
+      document.getElementById('po-api').textContent = d.api;
+      document.getElementById('po-screen').textContent = d.screen;
+      document.getElementById('po-ask').textContent = d.ask;
+      const r = el.getBoundingClientRect();
+      let top = r.bottom + 8 + window.scrollY;
+      let left = r.left + window.scrollX;
+      if (left + 360 > window.innerWidth - 20) left = window.innerWidth - 380;
+      popover.style.top = top + 'px';
+      popover.style.left = left + 'px';
+      popover.classList.add('open');
+    });
+    el.addEventListener('mouseleave', () => popover.classList.remove('open'));
+  });
+}
+
+renderRibbon();
+renderDetail();
+
+// Click the "Create Direct PO" pill → smooth-scroll to drill-in
+const createDirectCard = document.getElementById('card-create-direct');
+if (createDirectCard) {
+  createDirectCard.addEventListener('click', () => {
+    document.getElementById('graph').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+// Master graph modal — open / close / esc / click-outside
+const masterModal = document.getElementById('master-modal');
+const openGraphBtn = document.getElementById('open-graph-btn');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+function openMasterModal() {
+  masterModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMasterModal() {
+  masterModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+if (openGraphBtn) openGraphBtn.addEventListener('click', openMasterModal);
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeMasterModal);
+if (masterModal) masterModal.addEventListener('click', (e) => {
+  if (e.target === masterModal) closeMasterModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && masterModal && masterModal.classList.contains('open')) closeMasterModal();
+});
+
+function escapeHtml(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+</body>
+</html>
