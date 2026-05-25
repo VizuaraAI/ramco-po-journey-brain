@@ -445,41 +445,52 @@
     color: var(--ink);
   }
 
-  /* P2P hero (single full-width card replacing the 6-grid) */
+  /* Ramco-Specified Boundary hero — LIGHT theme */
   .p2p-hero {
-    background: linear-gradient(135deg, rgba(10, 63, 48, 0.96), rgba(26, 85, 68, 0.92));
+    background: var(--white);
+    border: 1px solid var(--border-soft);
     border-radius: 22px;
     padding: 36px 40px 28px;
     margin-top: 32px;
-    color: white;
+    color: var(--ink);
+    position: relative;
+  }
+  .p2p-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 4px;
+    background: linear-gradient(90deg, #b0c8e0, #98c4b8, #c5a8f0, #f0c896, #ecb8b8, #bababa);
+    border-radius: 0 0 2px 2px;
   }
   .p2p-hero h3 {
     font-family: 'Fraunces', serif;
     font-weight: 500;
     font-size: 28px;
     letter-spacing: -0.01em;
-    color: white;
+    color: var(--ink);
     margin-bottom: 6px;
   }
-  .p2p-hero h3 .star { color: var(--purple); margin-left: 8px; }
+  .p2p-hero h3 .star { color: var(--purple-deep); margin-left: 8px; font-size: 18px; }
   .p2p-hero .p2p-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--purple-deep);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
+    font-weight: 600;
   }
   .p2p-hero p.p2p-lead {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--muted);
     font-size: 15px;
     line-height: 1.6;
     max-width: 720px;
     margin-bottom: 26px;
   }
   .p2p-graph-box {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
     border-radius: 14px;
     padding: 28px 24px 22px;
     margin-bottom: 22px;
@@ -499,8 +510,8 @@
   .p2p-node .p2p-dot {
     width: 64px; height: 64px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    border: 3px solid var(--white);
+    box-shadow: 0 3px 12px rgba(22, 22, 19, 0.08);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Fraunces', serif;
     font-weight: 500;
@@ -509,16 +520,16 @@
     margin-bottom: 8px;
     position: relative;
   }
-  .p2p-node:hover .p2p-dot { border-color: white; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35); }
+  .p2p-node:hover .p2p-dot { box-shadow: 0 6px 20px rgba(22, 22, 19, 0.16); }
   .p2p-node.built .p2p-dot {
-    border-color: var(--purple);
-    box-shadow: 0 0 0 4px rgba(197, 168, 240, 0.30), 0 3px 12px rgba(0, 0, 0, 0.25);
+    border-color: var(--purple-mid);
+    box-shadow: 0 0 0 4px rgba(197, 168, 240, 0.25), 0 3px 12px rgba(92, 58, 150, 0.18);
   }
   .p2p-node .p2p-star {
     position: absolute;
     top: -4px; right: -4px;
-    background: var(--purple);
-    color: var(--ink);
+    background: var(--purple-mid);
+    color: white;
     width: 18px; height: 18px;
     border-radius: 50%;
     font-size: 10px;
@@ -530,7 +541,7 @@
     font-family: 'Fraunces', serif;
     font-weight: 500;
     font-size: 14px;
-    color: white;
+    color: var(--ink);
     text-align: center;
     margin-bottom: 2px;
     letter-spacing: -0.005em;
@@ -538,13 +549,13 @@
   .p2p-node .p2p-count {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--muted);
     text-align: center;
   }
   .p2p-edge {
     flex: 1; max-width: 50px; min-width: 18px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.35);
+    background: var(--border);
     margin: 0 4px;
     align-self: flex-start;
     margin-top: 30px;
@@ -555,17 +566,17 @@
     position: absolute;
     right: -3px;
     top: -7px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--muted-2);
     font-size: 11px;
   }
   .p2p-edge.dashed {
     background: transparent;
-    border-top: 2px dashed rgba(255, 255, 255, 0.3);
+    border-top: 2px dashed var(--muted-2);
     height: 0;
   }
   .p2p-hero .p2p-hint {
     text-align: center;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--muted-2);
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     text-transform: uppercase;
@@ -573,14 +584,14 @@
     margin-top: 14px;
   }
 
-  /* Source callouts (used in hero + modals) */
+  /* Source callouts (light theme everywhere now) */
   .source-callout {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
     padding: 14px 18px;
     margin-top: 4px;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--ink-2);
   }
   .source-callout.on-cream {
     background: var(--cream-light);
@@ -590,7 +601,7 @@
   .source-callout .sc-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: var(--purple);
+    color: var(--purple-deep);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 600;
@@ -601,7 +612,7 @@
     font-family: 'Fraunces', serif;
     font-weight: 500;
     font-size: 15px;
-    color: white;
+    color: var(--ink);
     margin-bottom: 8px;
     letter-spacing: -0.005em;
   }
@@ -611,16 +622,18 @@
     font-size: 12px;
     line-height: 1.7;
   }
-  .source-callout .sc-paths .sc-arrow { color: rgba(255, 255, 255, 0.4); margin: 0 8px; }
+  .source-callout .sc-paths .sc-arrow { color: var(--muted-2); margin: 0 8px; }
   .source-callout.on-cream .sc-paths .sc-arrow { color: var(--muted-2); }
   .source-callout pre {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    background: rgba(0, 0, 0, 0.20);
+    background: var(--white);
+    border: 1px solid var(--border);
     padding: 10px 12px;
     border-radius: 6px;
     margin: 8px 0 0;
     overflow-x: auto;
+    color: var(--ink);
   }
   .source-callout.on-cream pre {
     background: var(--white);
@@ -2435,14 +2448,14 @@
 <section class="fw-section">
   <div class="container">
     <div class="eyebrow-sm" style="text-align: center; display: block;">The full framework</div>
-    <h2 style="text-align: center; margin: 0 auto 14px;">Six layers — and the <em>Master Journey Aware</em> retriever that walks them.</h2>
-    <p class="intro" style="text-align: center; margin: 0 auto 0;">A user question rarely lives inside one module. "My PR was approved, where's the PO?" spans two. "Why hasn't this invoice been paid?" can span four. The framework has to <em>think across modules</em> — which is why the topmost layer is the <b>Master Journey</b> (the business process), not a single module's graph.</p>
+    <h2 style="text-align: center; margin: 0 auto 14px;">Six layers — and the <em>Boundary-Aware</em> retriever that walks them.</h2>
+    <p class="intro" style="text-align: center; margin: 0 auto 0;">A user question rarely lives inside one module. "My PR was approved, where's the PO?" spans two. "Why hasn't this invoice been paid?" can span four. The framework has to <em>think across modules</em> — which is why the topmost layer is the <b>Ramco-Specified Boundary</b> (the business domain Ramco organised the ERP into, like Procure-to-Pay), not a single module's graph.</p>
 
-    <!-- LAYER 1 · The Procure-to-Pay Master Journey (the Russian-doll entry point) -->
+    <!-- LAYER 1 · The Procure-to-Pay Ramco-Specified Boundary (the Russian-doll entry point) -->
     <div class="p2p-hero">
-      <div class="p2p-tag">Layer 1 · the master journey</div>
+      <div class="p2p-tag">Layer 1 · Ramco-Specified Boundary</div>
       <h3>Procure-to-Pay <span class="star">★ built</span></h3>
-      <p class="p2p-lead">A business process that spans six Ramco modules. The retriever walks this graph when a question touches more than one module. Click any module dot to drill in — see its sub-journeys, then a specific journey's steps, then the slots and splices at the atomic level. Every level shows you where the data came from.</p>
+      <p class="p2p-lead">A Ramco-Specified Boundary is one of the business domains Ramco organised the ERP into. P2P spans six modules. The retriever walks this graph when a question touches more than one of them. Click any module dot to drill in — see its journeys, then a specific journey's steps, then the slots and splices at the atomic level. Every level shows you where the data came from.</p>
 
       <div class="p2p-graph-box">
         <div class="p2p-graph">
@@ -2501,7 +2514,7 @@
     <!-- LAYERS 2-6 · vertical cascade -->
     <div class="layer-cascade-wrap">
       <div class="layer-cascade-title">
-        <div class="lct-eyebrow">↓ Within any master journey, the runtime cascades through</div>
+        <div class="lct-eyebrow">↓ Within any Ramco-Specified Boundary, the runtime cascades through</div>
         <h3>Five more layers · <em>each clickable</em></h3>
       </div>
       <div class="layer-cascade">
@@ -2555,8 +2568,8 @@
     <!-- THE RETRIEVER -->
     <div class="retriever-section">
       <div class="col-eyebrow" style="margin-bottom: 6px;">▼ The runtime brain</div>
-      <h3>The <em>Master-Journey-Aware</em> Retriever</h3>
-      <p class="r-intro">It's the Phase 9 retriever, generalised. Instead of returning a subgraph from one module, it walks across module boundaries when the user's question crosses them — assembling a packet that contains nodes from each module it touched and the lifecycle edges between them. The LLM then writes one coherent answer that follows the chain.</p>
+      <h3>The <em>Boundary-Aware</em> Retriever</h3>
+      <p class="r-intro">It's the Phase 9 retriever, generalised. Instead of returning a subgraph from one module, it walks across module lines inside a Ramco-Specified Boundary when the user's question crosses them — assembling a packet that contains nodes from each module it touched and the lifecycle edges between them. The LLM then writes one coherent answer that follows the chain.</p>
 
       <div class="retriever-diagram">
         <div class="r-card">
@@ -2566,10 +2579,10 @@
           <div class="qbox">"My PR was approved last week, where's the PO? And did the goods arrive yet?"</div>
         </div>
         <div class="r-card">
-          <span class="r-step">Step 2 · master + modules</span>
+          <span class="r-step">Step 2 · boundary + modules</span>
           <h4>Classify, then identify touched modules</h4>
-          <p>The retriever first classifies the master journey, then enumerates every module the question references.</p>
-          <p style="margin-top:10px;"><b>Master:</b> &nbsp;<span class="module-tag" style="background:rgba(10,63,48,0.12); color:var(--green);">P2P</span></p>
+          <p>The retriever first classifies the Ramco-Specified Boundary, then enumerates every module the question references.</p>
+          <p style="margin-top:10px;"><b>Boundary:</b> &nbsp;<span class="module-tag" style="background:rgba(10,63,48,0.12); color:var(--green);">P2P</span></p>
           <p style="margin-top:8px;"><b>Modules touched:</b><br>
             <span class="module-tag pr">PR</span>
             <span class="module-tag po">PO</span>
@@ -2587,7 +2600,7 @@
       </div>
 
       <p style="font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 800px;">
-        Click the <b>Master Journey</b> box above to see the full P2P lifecycle graph that the retriever walks. Click <b>Module Router</b> to see how it decides which module a question belongs to.
+        Click any module dot inside the <b>P2P Ramco-Specified Boundary</b> card at the top to drill into its journeys. From there, drill into a specific journey to see its steps, then into a step to see its slots, splices, and rules — with the source artifact shown at every level.
       </p>
     </div>
   </div>
@@ -3998,7 +4011,7 @@ function renderModuleDrill(moduleKey) {
   const mod = MODULE_SUBJOURNEYS[moduleKey];
   if (!mod) return;
   modalTitle.textContent = `${mod.name} module`;
-  modalSub.textContent = `Layer 2 · the module's sub-journeys`;
+  modalSub.textContent = `Layer 2 · the module's journeys`;
 
   let body = breadcrumbHtml();
   body += `<button class="modal-back-btn" onclick="drillBack()">← back</button>`;
@@ -4006,7 +4019,7 @@ function renderModuleDrill(moduleKey) {
   if (mod.notIngested) {
     body += `
       <div class="modal-intro">
-        <b>${mod.name}</b> · this module's <code>Service_details</code> CSV has not been ingested yet. The journey list below would be discovered by the same recipe we used for the other modules — extracting the <code>activity_name</code> column.
+        <b>${mod.name}</b> · this module's <code>Service_details</code> CSV has not been ingested yet. The journey list would be discovered by the same recipe we used for the other modules — extracting the <code>activity_name</code> column.
       </div>
       <div class="source-callout on-cream">
         <div class="sc-eyebrow">▼ Source · what we'd need</div>
@@ -4024,18 +4037,18 @@ function renderModuleDrill(moduleKey) {
 
   body += `
     <div class="modal-intro">
-      <b>${mod.name}</b> has <b>${mod.journeys.length} sub-journeys</b>. ${mod.built ? 'This module is fully built through Phases 3–7. Click any sub-journey to drill into its steps.' : 'This module is catalogued from its Service Catalog. Click any sub-journey to see what its construction would look like.'}
+      <b>${mod.name}</b> has <b>${mod.journeys.length} journeys</b>. ${mod.built ? 'This module is fully built through Phases 3–7. Click any journey to drill into its steps.' : 'This module is catalogued from its Service Catalog. Click any journey to see what its construction would look like.'}
     </div>
 
     <div class="source-callout on-cream">
-      <div class="sc-eyebrow">▼ Source · where these sub-journeys came from</div>
+      <div class="sc-eyebrow">▼ Source · where these journeys came from</div>
       <div class="sc-title">${mod.sourceFile}</div>
-      <div class="sc-paths">${mod.csvRows.toLocaleString()} rows · we deduplicate on column 5 (<code>activity_name</code>) to get ${mod.journeys.length} distinct sub-journeys.</div>
+      <div class="sc-paths">${mod.csvRows.toLocaleString()} rows · we deduplicate on column 5 (<code>activity_name</code>) to get ${mod.journeys.length} distinct journeys.</div>
       <pre>awk -F',' 'NR>1 {print $5}' ${mod.sourceFile.split('/').pop()} | sort -u
 # → ${mod.journeys.length} distinct values</pre>
     </div>
 
-    <div class="modal-section-title">${mod.journeys.length} sub-journeys</div>
+    <div class="modal-section-title">${mod.journeys.length} journeys</div>
     <div class="drill-grid">
       ${mod.journeys.map(j => `
         <div class="drill-card ${j.built ? 'built' : ''}" data-drill-journey="${j.id}" data-drill-module="${moduleKey}">
