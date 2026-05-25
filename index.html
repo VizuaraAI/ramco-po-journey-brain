@@ -445,6 +445,284 @@
     color: var(--ink);
   }
 
+  /* P2P hero (single full-width card replacing the 6-grid) */
+  .p2p-hero {
+    background: linear-gradient(135deg, rgba(10, 63, 48, 0.96), rgba(26, 85, 68, 0.92));
+    border-radius: 22px;
+    padding: 36px 40px 28px;
+    margin-top: 32px;
+    color: white;
+  }
+  .p2p-hero h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    color: white;
+    margin-bottom: 6px;
+  }
+  .p2p-hero h3 .star { color: var(--purple); margin-left: 8px; }
+  .p2p-hero .p2p-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+  }
+  .p2p-hero p.p2p-lead {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 720px;
+    margin-bottom: 26px;
+  }
+  .p2p-graph-box {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 28px 24px 22px;
+    margin-bottom: 22px;
+  }
+  .p2p-graph {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+  .p2p-node {
+    display: inline-flex; flex-direction: column; align-items: center;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .p2p-node:hover { transform: translateY(-3px); }
+  .p2p-node .p2p-dot {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .p2p-node:hover .p2p-dot { border-color: white; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35); }
+  .p2p-node.built .p2p-dot {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 4px rgba(197, 168, 240, 0.30), 0 3px 12px rgba(0, 0, 0, 0.25);
+  }
+  .p2p-node .p2p-star {
+    position: absolute;
+    top: -4px; right: -4px;
+    background: var(--purple);
+    color: var(--ink);
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: serif;
+    font-weight: 600;
+  }
+  .p2p-node .p2p-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    margin-bottom: 2px;
+    letter-spacing: -0.005em;
+  }
+  .p2p-node .p2p-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+  }
+  .p2p-edge {
+    flex: 1; max-width: 50px; min-width: 18px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 4px;
+    align-self: flex-start;
+    margin-top: 30px;
+    position: relative;
+  }
+  .p2p-edge::after {
+    content: '▶';
+    position: absolute;
+    right: -3px;
+    top: -7px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+  }
+  .p2p-edge.dashed {
+    background: transparent;
+    border-top: 2px dashed rgba(255, 255, 255, 0.3);
+    height: 0;
+  }
+  .p2p-hero .p2p-hint {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 14px;
+  }
+
+  /* Source callouts (used in hero + modals) */
+  .source-callout {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .source-callout.on-cream {
+    background: var(--cream-light);
+    border: 1px solid var(--border-soft);
+    color: var(--ink-2);
+  }
+  .source-callout .sc-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .source-callout.on-cream .sc-eyebrow { color: var(--purple-deep); }
+  .source-callout .sc-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .source-callout.on-cream .sc-title { color: var(--ink); }
+  .source-callout .sc-paths {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .source-callout .sc-paths .sc-arrow { color: rgba(255, 255, 255, 0.4); margin: 0 8px; }
+  .source-callout.on-cream .sc-paths .sc-arrow { color: var(--muted-2); }
+  .source-callout pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(0, 0, 0, 0.20);
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 8px 0 0;
+    overflow-x: auto;
+  }
+  .source-callout.on-cream pre {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--ink);
+  }
+
+  /* Modal breadcrumb + back navigation */
+  .modal-breadcrumb {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .modal-breadcrumb .bc-item {
+    cursor: pointer;
+    color: var(--purple-deep);
+  }
+  .modal-breadcrumb .bc-item:hover { text-decoration: underline; }
+  .modal-breadcrumb .bc-current {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .modal-breadcrumb .bc-sep { color: var(--muted-2); }
+  .modal-back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 5px 12px 5px 10px;
+    font-size: 11px;
+    color: var(--ink-2);
+    cursor: pointer;
+    font-family: inherit;
+    margin-bottom: 14px;
+    transition: background 0.15s;
+  }
+  .modal-back-btn:hover { background: var(--white); }
+
+  /* Drill cards (module sub-journey grid) */
+  .drill-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  }
+  @media (max-width: 800px) { .drill-grid { grid-template-columns: 1fr 1fr; } }
+  .drill-card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex; flex-direction: column;
+  }
+  .drill-card:hover { border-color: var(--purple-mid); transform: translateY(-1px); }
+  .drill-card.built {
+    border: 2px solid var(--purple-mid);
+    box-shadow: 0 3px 10px rgba(92, 58, 150, 0.08);
+  }
+  .drill-card.disabled { opacity: 0.55; cursor: default; }
+  .drill-card .dc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--purple-deep);
+    margin-bottom: 4px;
+  }
+  .drill-card .dc-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  .drill-card .dc-meta {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .drill-card .dc-badge {
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+    align-self: flex-start;
+  }
+  .drill-card .dc-badge.built { background: rgba(182, 201, 148, 0.45); color: #3d5c25; }
+  .drill-card .dc-badge.cata  { background: var(--cream-light); color: var(--muted); }
+  .drill-card .dc-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--purple-deep);
+    margin-top: 6px;
+  }
+
   /* Master journey grid (full width, 6 cards, each is a mini graph) */
   .master-grid {
     display: grid;
@@ -2160,129 +2438,64 @@
     <h2 style="text-align: center; margin: 0 auto 14px;">Six layers — and the <em>Master Journey Aware</em> retriever that walks them.</h2>
     <p class="intro" style="text-align: center; margin: 0 auto 0;">A user question rarely lives inside one module. "My PR was approved, where's the PO?" spans two. "Why hasn't this invoice been paid?" can span four. The framework has to <em>think across modules</em> — which is why the topmost layer is the <b>Master Journey</b> (the business process), not a single module's graph.</p>
 
-    <!-- LAYER 1 · The six Master Journeys, each as a visual graph -->
-    <div class="master-grid">
+    <!-- LAYER 1 · The Procure-to-Pay Master Journey (the Russian-doll entry point) -->
+    <div class="p2p-hero">
+      <div class="p2p-tag">Layer 1 · the master journey</div>
+      <h3>Procure-to-Pay <span class="star">★ built</span></h3>
+      <p class="p2p-lead">A business process that spans six Ramco modules. The retriever walks this graph when a question touches more than one module. Click any module dot to drill in — see its sub-journeys, then a specific journey's steps, then the slots and splices at the atomic level. Every level shows you where the data came from.</p>
 
-      <div class="master-card built" data-mj="p2p" style="--mc-from:#0a3f30; --mc-to:#1a5544;">
-        <div class="master-band"></div>
-        <div class="mc-body">
-          <div class="mc-symbol">◇</div>
-          <div class="mc-name">Procure-to-Pay</div>
-          <div class="mc-meta">P2P · 35 sub-journeys · 5 CSVs ingested ★</div>
-          <div class="mc-graph">
-            <div class="mc-node"><div class="mc-dot" style="background:#b0c8e0;"></div><div class="mc-label">PR</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#98c4b8;"></div><div class="mc-label">Qtn</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#c5a8f0;"></div><div class="mc-label">PO ★</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#f0c896;"></div><div class="mc-label">GR</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#ecb8b8;"></div><div class="mc-label">SIN</div></div>
-            <div class="mc-edge dashed"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#bababa;"></div><div class="mc-label">AP</div></div>
+      <div class="p2p-graph-box">
+        <div class="p2p-graph">
+          <div class="p2p-node" data-module="pr">
+            <div class="p2p-dot" style="background:#b0c8e0;">PR</div>
+            <div class="p2p-name">Purchase Request</div>
+            <div class="p2p-count">8 journeys</div>
           </div>
-          <div class="mc-cta"><span class="cta-built">Click → see how we assembled it</span></div>
+          <div class="p2p-edge"></div>
+          <div class="p2p-node" data-module="qtn">
+            <div class="p2p-dot" style="background:#98c4b8;">Qtn</div>
+            <div class="p2p-name">Quotation / RFQ</div>
+            <div class="p2p-count">10 journeys</div>
+          </div>
+          <div class="p2p-edge"></div>
+          <div class="p2p-node built" data-module="po">
+            <div class="p2p-dot" style="background:#c5a8f0;">PO<span class="p2p-star">★</span></div>
+            <div class="p2p-name">Purchase Order</div>
+            <div class="p2p-count">13 journeys · fully built</div>
+          </div>
+          <div class="p2p-edge"></div>
+          <div class="p2p-node" data-module="gr">
+            <div class="p2p-dot" style="background:#f0c896;">GR</div>
+            <div class="p2p-name">Goods Receipt</div>
+            <div class="p2p-count">26 journeys</div>
+          </div>
+          <div class="p2p-edge"></div>
+          <div class="p2p-node" data-module="sin">
+            <div class="p2p-dot" style="background:#ecb8b8;">SIN</div>
+            <div class="p2p-name">Supplier Invoice</div>
+            <div class="p2p-count">15 journeys</div>
+          </div>
+          <div class="p2p-edge dashed"></div>
+          <div class="p2p-node" data-module="ap">
+            <div class="p2p-dot" style="background:#bababa;">AP</div>
+            <div class="p2p-name">Accounts Payable</div>
+            <div class="p2p-count">not yet ingested</div>
+          </div>
         </div>
+        <div class="p2p-hint">click any module ↑ to drill in</div>
       </div>
 
-      <div class="master-card" data-mj="o2c" style="--mc-from:#c87a3a; --mc-to:#e89a5a;">
-        <div class="master-band"></div>
-        <div class="mc-body">
-          <div class="mc-symbol">◈</div>
-          <div class="mc-name">Order-to-Cash</div>
-          <div class="mc-meta">O2C · 19 sub-journeys · CSV not ingested</div>
-          <div class="mc-graph">
-            <div class="mc-node"><div class="mc-dot" style="background:#f4d2a8;"></div><div class="mc-label">Enq</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#f4be8e;"></div><div class="mc-label">SO</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#eaa572;"></div><div class="mc-label">Pick</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#e89058;"></div><div class="mc-label">Ship</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#d77c40;"></div><div class="mc-label">Inv</div></div>
-            <div class="mc-edge dashed"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#bababa;"></div><div class="mc-label">AR</div></div>
-          </div>
-          <div class="mc-cta">Click → see how it would assemble</div>
+      <div class="source-callout">
+        <div class="sc-eyebrow">▼ Source · where these 6 modules came from</div>
+        <div class="sc-title">Five module folders in the Ramco artifact tree</div>
+        <div class="sc-paths">
+          <code>/Users/rajat/Downloads/Ramco Artifacts/Pur_Req/</code><span class="sc-arrow">→</span>PR<br>
+          <code>/Users/rajat/Downloads/Ramco Artifacts/Pur_Qtn/</code><span class="sc-arrow">→</span>Qtn<br>
+          <code>/Users/rajat/Downloads/Ramco Artifacts/PO/</code><span class="sc-arrow">→</span>PO<br>
+          <code>/Users/rajat/Downloads/Ramco Artifacts/GR/</code><span class="sc-arrow">→</span>GR<br>
+          <code>/Users/rajat/Downloads/Ramco Artifacts/SIN/</code><span class="sc-arrow">→</span>SIN
         </div>
       </div>
-
-      <div class="master-card" data-mj="logistics" style="--mc-from:#2a8278; --mc-to:#4ca296;">
-        <div class="master-band"></div>
-        <div class="mc-body">
-          <div class="mc-symbol">◐</div>
-          <div class="mc-name">Internal Logistics</div>
-          <div class="mc-meta">15 sub-journeys · CSV partially available</div>
-          <div class="mc-graph">
-            <div class="mc-node"><div class="mc-dot" style="background:#a8d8d0;"></div><div class="mc-label">Stock<br>Req</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#8cc4ba;"></div><div class="mc-label">Trans<br>fer</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#74b0a4;"></div><div class="mc-label">Put<br>away</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#5c9c90;"></div><div class="mc-label">Count</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#4a857a;"></div><div class="mc-label">Adj</div></div>
-          </div>
-          <div class="mc-cta">Click → see how it would assemble</div>
-        </div>
-      </div>
-
-      <div class="master-card" data-mj="setup" style="--mc-from:#6a6a64; --mc-to:#8c8c84;">
-        <div class="master-band"></div>
-        <div class="mc-body">
-          <div class="mc-symbol">◔</div>
-          <div class="mc-name">System Setup &amp; Master Data</div>
-          <div class="mc-meta">20 sub-journeys · admin config</div>
-          <div class="mc-graph">
-            <div class="mc-node"><div class="mc-dot" style="background:#c8c4b8;"></div><div class="mc-label">Org</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#b0aca0;"></div><div class="mc-label">Mast<br>er Data</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#989488;"></div><div class="mc-label">Users<br>Roles</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#807c70;"></div><div class="mc-label">Sys<br>Params</div></div>
-          </div>
-          <div class="mc-cta">Click → see how it would assemble</div>
-        </div>
-      </div>
-
-      <div class="master-card" data-mj="asset" style="--mc-from:#8b6020; --mc-to:#b88040;">
-        <div class="master-band"></div>
-        <div class="mc-body">
-          <div class="mc-symbol">◆</div>
-          <div class="mc-name">Asset Maintenance</div>
-          <div class="mc-meta">3 sub-journeys · narrow scope</div>
-          <div class="mc-graph">
-            <div class="mc-node"><div class="mc-dot" style="background:#e8c8a4;"></div><div class="mc-label">Asset<br>Setup</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#d4a878;"></div><div class="mc-label">Main<br>tain</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#b88858;"></div><div class="mc-label">Depre<br>ciate</div></div>
-          </div>
-          <div class="mc-cta">Click → see how it would assemble</div>
-        </div>
-      </div>
-
-      <div class="master-card" data-mj="crossmod" style="--mc-from:#5c3a96; --mc-to:#8866b8;">
-        <div class="master-band"></div>
-        <div class="mc-body">
-          <div class="mc-symbol">◯</div>
-          <div class="mc-name">Cross-Module / Workflow</div>
-          <div class="mc-meta">2 sub-journeys · cuts across</div>
-          <div class="mc-graph">
-            <div class="mc-node"><div class="mc-dot" style="background:#d2a8ff;"></div><div class="mc-label">Work<br>flow</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#a884d4;"></div><div class="mc-label">Approv<br>als</div></div>
-            <div class="mc-edge"></div>
-            <div class="mc-node"><div class="mc-dot" style="background:#7860a8;"></div><div class="mc-label">Notify</div></div>
-          </div>
-          <div class="mc-cta">Click → see how it would assemble</div>
-        </div>
-      </div>
-
     </div>
 
     <!-- LAYERS 2-6 · vertical cascade -->
@@ -3603,6 +3816,400 @@ function renderGraphModal() {
   modalTitle.textContent = 'PO Knowledge Graph';
   modalSub.textContent = 'all 13 journeys · 5 key statuses · produces / acts_on / transitions edges';
   showGraphView();
+}
+
+// =========================================================================
+// RUSSIAN-DOLL DRILL: P2P module → sub-journeys → journey steps → atoms
+// =========================================================================
+
+const MODULE_SUBJOURNEYS = {
+  'pr': {
+    name: 'Purchase Request',
+    moduleColor: '#b0c8e0',
+    sourceFile: 'Pur_Req/ModelInfo/Service_details_PUR_REQ.csv',
+    csvRows: 2037,
+    journeys: [
+      { id: 'PRCrt',       name: 'Create Purchase Request',           desc: 'Raise a new PR for items/services needed.' },
+      { id: 'PRAuth',      name: 'Authorize Purchase Request',        desc: 'Approve a draft PR so it can move forward.' },
+      { id: 'PREdt',       name: 'Edit Purchase Request',             desc: 'Correct an in-progress PR.' },
+      { id: 'PRCopy',      name: 'Copy and Create PR',                desc: 'Clone an existing PR.' },
+      { id: 'PRCan',       name: 'Short Close Purchase Request',      desc: 'Close PR early; forgive remaining qty.' },
+      { id: 'PRHld',       name: 'Change Status · PR',                desc: 'Hold, release, terminate.' },
+      { id: 'PRView',      name: 'View Purchase Request',             desc: 'Search and inspect.' },
+      { id: 'PRHlp',       name: 'Help On Purchase Request',          desc: 'Help / lookup utility.' }
+    ]
+  },
+  'qtn': {
+    name: 'Quotation / RFQ',
+    moduleColor: '#98c4b8',
+    sourceFile: 'Pur_Qtn/ModelInfo/Service_details_PUR_QTN.csv',
+    csvRows: 6676,
+    journeys: [
+      { id: 'pqtnrcrt',  name: 'Create Request for Quotation (RFQ)',  desc: 'Solicit quotes from suppliers.' },
+      { id: 'pqtnrmod',  name: 'Edit RFQ',                            desc: 'Modify an in-progress RFQ.' },
+      { id: 'pqtnrvw',   name: 'View RFQ',                            desc: 'Search and inspect RFQs.' },
+      { id: 'pqtnrhlp',  name: 'Help on RFQ',                         desc: 'Help / lookup utility.' },
+      { id: 'pqtnqcrt',  name: 'Create Quotation',                    desc: 'Capture supplier-side quote response.' },
+      { id: 'pqtnqedt',  name: 'Edit Quotation',                      desc: 'Correct an in-progress quotation.' },
+      { id: 'pqtnqapp',  name: 'Approve Quotation',                   desc: 'Authorize a quotation as the basis for a PO.' },
+      { id: 'pqtnqvw',   name: 'View Quotation',                      desc: 'Search and inspect quotations.' },
+      { id: 'pqtnqhlp',  name: 'Help on Quotation',                   desc: 'Help / lookup utility.' },
+      { id: 'PQCopy',    name: 'Copy and Create Quotation',           desc: 'Clone an existing quotation.' }
+    ]
+  },
+  'po': {
+    name: 'Purchase Order',
+    moduleColor: '#c5a8f0',
+    sourceFile: 'PO/ModelInfo/Service_details_PO.csv',
+    csvRows: 6779,
+    built: true,
+    journeys: [
+      { id: 'PoCrt',       name: 'Create Direct PO',                  desc: 'Fresh PO without external reference.', built: true },
+      { id: 'PoCrtQtn',    name: 'From Quotation',                    desc: 'Convert an authorized quotation into a PO.' },
+      { id: 'PoCrtPr',     name: 'From Purchase Request',             desc: 'Convert an approved PR into a PO.' },
+      { id: 'PoCrtSo',     name: 'From Sale Order',                   desc: 'Back-to-back PO to fulfill a sale order.' },
+      { id: 'PoCrtTen',    name: 'From Tender',                       desc: 'Issue PO against an awarded tender.' },
+      { id: 'PoCopy',      name: 'Copy and Create PO',                desc: 'Clone an existing PO.' },
+      { id: 'PoEdt',       name: 'Edit PO',                           desc: 'Correct a draft PO before approval.' },
+      { id: 'PoAmnd',      name: 'Amend PO',                          desc: 'Formal post-approval amendment.' },
+      { id: 'PoApp',       name: 'Approve PO',                        desc: 'Authorize the PO; release to supplier.' },
+      { id: 'PoHold',      name: 'Change PO Status',                  desc: 'Hold, release, cancel, terminate.' },
+      { id: 'PoScl',       name: 'Short Close PO',                    desc: 'Close PO early.' },
+      { id: 'PoViw',       name: 'View PO',                           desc: 'Search and inspect.' },
+      { id: 'POMtn',       name: 'Maintain PO (bulk)',                desc: 'Power-user: bulk update many POs at once.' }
+    ]
+  },
+  'gr': {
+    name: 'Goods Receipt',
+    moduleColor: '#f0c896',
+    sourceFile: 'GR/ModelInfo/Service_details_GR.csv',
+    csvRows: 2537,
+    journeys: [
+      { id: 'GRSCCrt',          name: 'Create Receipt Document',        desc: 'Receive goods against a PO.' },
+      { id: 'GRESCCrt',         name: 'Edit Receipt Document',          desc: 'Correct an in-progress receipt.' },
+      { id: 'GRVwESCCrt',       name: 'View Receipt Document',          desc: 'Search and inspect receipts.' },
+      { id: 'GRRev',            name: 'Reverse Receipt Document',       desc: 'Undo a receipt.' },
+      { id: 'GRGRCRev',         name: 'Confirm Reversal',               desc: 'Confirm a reversal in progress.' },
+      { id: 'GRNCrt',           name: 'Create Return Note',             desc: 'Return goods to supplier.' },
+      { id: 'GRNEdt',           name: 'Edit Return Note',               desc: 'Correct an in-progress return note.' },
+      { id: 'GRNVw',            name: 'View Return Note',               desc: 'Search and inspect return notes.' },
+      { id: 'GRMov',            name: 'Edit Movement Details',          desc: 'Adjust movement of received goods.' },
+      { id: 'GRVwMov',          name: 'View Movement Details',          desc: 'Inspect movement records.' },
+      { id: 'GRInspn',          name: 'Edit Inspection Details',        desc: 'Record quality inspection results.' },
+      { id: 'GRVwInspn',        name: 'View Inspection Details',        desc: 'Inspect inspection records.' },
+      { id: 'GRValues',         name: 'Edit Receipt Values',            desc: 'Adjust receipt-level values.' },
+      { id: 'GRVwValues',       name: 'View Receipt Values',            desc: 'Inspect receipt values.' },
+      { id: 'GRNUndet',         name: 'Maintain Unloading',             desc: 'Track unloading activity.' },
+      { id: 'GRNVwUnload',      name: 'View Unloading',                 desc: 'Inspect unloading records.' },
+      { id: 'GRSPFYQUALDTLS',   name: 'Specify Quality Details',        desc: 'Quality details capture.' },
+      { id: 'GRSQID',           name: 'Specify Quality Inspection',     desc: 'Quality inspection capture.' },
+      { id: 'GRQBNG',           name: 'Quality Based Note Generation',  desc: 'Generate quality-driven notes.' },
+      { id: 'GRGE',             name: 'Gate Entry',                     desc: 'Record vehicle gate entry.' },
+      { id: 'GRCrtJobWrkRecon', name: 'Create Job Work Reconciliation', desc: 'Reconcile subcontract job work.' },
+      { id: 'GRVwJobWrkRecon',  name: 'View Job Work Reconciliation',   desc: 'Inspect reconciliation records.' },
+      { id: 'BILLPA',           name: 'Bill Passing to Accounts',       desc: 'Pass GR through to AP for billing.' },
+      { id: 'ConReg',           name: 'Container Registration',         desc: 'Register returnable containers.' },
+      { id: 'GPS',              name: 'Gate Pass System',               desc: 'Gate pass tracking.' },
+      { id: 'MainCargoClear',   name: 'Maintain Cargo Clearance',       desc: 'Manage cargo clearance.' }
+    ]
+  },
+  'sin': {
+    name: 'Supplier Invoice',
+    moduleColor: '#ecb8b8',
+    sourceFile: 'SIN/ModelInfo/Service_details_SIN.csv',
+    csvRows: 2335,
+    journeys: [
+      { id: 'SinAddInv',     name: 'Create Invoice',                   desc: 'Capture a supplier invoice.' },
+      { id: 'SinMntInv',     name: 'Edit Invoice',                     desc: 'Correct an in-progress invoice.' },
+      { id: 'SinAuInv',      name: 'Authorize Invoice',                desc: 'Approve a supplier invoice for payment.' },
+      { id: 'SinVwInv',      name: 'View Invoice',                     desc: 'Search and inspect invoices.' },
+      { id: 'SinMthInv',     name: 'Match Invoice',                    desc: '3-way match: PO + GR + Invoice.' },
+      { id: 'SinHRInv',      name: 'Hold / Release Invoice',           desc: 'Pause invoice processing.' },
+      { id: 'SinRevInv',     name: 'Reverse Invoice',                  desc: 'Undo an invoice posting.' },
+      { id: 'SinRecoInvoice',name: 'Reconcile Invoice',                desc: 'Reconcile invoice with related docs.' },
+      { id: 'SinVwReco',     name: 'View Reconciliation',              desc: 'Inspect reconciliation records.' },
+      { id: 'SinRecoRev',    name: 'Reverse Reconciliation',           desc: 'Undo reconciliation.' },
+      { id: 'SinAddMiscInv', name: 'Create Delivery Charges Invoice',  desc: 'Capture delivery/freight charges.' },
+      { id: 'SinMntMisInv',  name: 'Edit Delivery Charges Invoice',    desc: 'Correct delivery charges invoice.' },
+      { id: 'BulkSupOrdInv', name: 'Bulk Supplier Order Based Invoice',desc: 'Bulk invoicing.' },
+      { id: 'MntFrgInv',     name: 'Maintain Freight Invoice',         desc: 'Freight-specific invoice flow.' },
+      { id: 'G5QuickInv',    name: 'Maintain Invoice (quick)',         desc: 'Streamlined invoice capture.' }
+    ]
+  },
+  'ap': {
+    name: 'Accounts Payable',
+    moduleColor: '#bababa',
+    sourceFile: '(CSV not yet ingested)',
+    csvRows: 0,
+    journeys: [],
+    notIngested: true
+  }
+};
+
+// Navigation stack for drill-down breadcrumb
+let drillStack = [];
+
+function pushDrill(label, fn, ...args) {
+  drillStack.push({ label, fn, args });
+  fn(...args);
+  document.getElementById('modal-body').scrollTop = 0;
+}
+
+function drillBack() {
+  if (drillStack.length <= 1) { closeMasterModal(); drillStack = []; return; }
+  drillStack.pop();
+  const prev = drillStack[drillStack.length - 1];
+  prev.fn(...prev.args);
+  document.getElementById('modal-body').scrollTop = 0;
+}
+
+function startDrill(label, fn, ...args) {
+  drillStack = [];
+  drillStack.push({ label, fn, args });
+  fn(...args);
+  openMasterModal();
+  document.getElementById('modal-body').scrollTop = 0;
+}
+
+function breadcrumbHtml() {
+  const parts = drillStack.map((s, i) => {
+    if (i === drillStack.length - 1) {
+      return `<span class="bc-current">${escapeHtml(s.label)}</span>`;
+    }
+    return `<span class="bc-item" data-bcidx="${i}">${escapeHtml(s.label)}</span><span class="bc-sep">›</span>`;
+  });
+  return `<div class="modal-breadcrumb">${parts.join('')}</div>`;
+}
+
+function wireBreadcrumb() {
+  document.querySelectorAll('.modal-breadcrumb .bc-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const idx = parseInt(el.dataset.bcidx, 10);
+      drillStack = drillStack.slice(0, idx + 1);
+      const item = drillStack[drillStack.length - 1];
+      item.fn(...item.args);
+      document.getElementById('modal-body').scrollTop = 0;
+    });
+  });
+}
+
+// LEVEL 2 · Module drill (show its sub-journeys)
+function renderModuleDrill(moduleKey) {
+  const mod = MODULE_SUBJOURNEYS[moduleKey];
+  if (!mod) return;
+  modalTitle.textContent = `${mod.name} module`;
+  modalSub.textContent = `Layer 2 · the module's sub-journeys`;
+
+  let body = breadcrumbHtml();
+  body += `<button class="modal-back-btn" onclick="drillBack()">← back</button>`;
+
+  if (mod.notIngested) {
+    body += `
+      <div class="modal-intro">
+        <b>${mod.name}</b> · this module's <code>Service_details</code> CSV has not been ingested yet. The journey list below would be discovered by the same recipe we used for the other modules — extracting the <code>activity_name</code> column.
+      </div>
+      <div class="source-callout on-cream">
+        <div class="sc-eyebrow">▼ Source · what we'd need</div>
+        <div class="sc-title">The AP module's Service Catalog</div>
+        <div class="sc-paths">
+          Path: <code>/Users/rajat/Downloads/Ramco Artifacts/AP/ModelInfo/Service_details_AP.csv</code> (not yet supplied)<br>
+          Recipe: <code>awk -F',' 'NR>1 {print $5}' Service_details_AP.csv | sort -u</code>
+        </div>
+      </div>
+    `;
+    showOtherView(body);
+    wireBreadcrumb();
+    return;
+  }
+
+  body += `
+    <div class="modal-intro">
+      <b>${mod.name}</b> has <b>${mod.journeys.length} sub-journeys</b>. ${mod.built ? 'This module is fully built through Phases 3–7. Click any sub-journey to drill into its steps.' : 'This module is catalogued from its Service Catalog. Click any sub-journey to see what its construction would look like.'}
+    </div>
+
+    <div class="source-callout on-cream">
+      <div class="sc-eyebrow">▼ Source · where these sub-journeys came from</div>
+      <div class="sc-title">${mod.sourceFile}</div>
+      <div class="sc-paths">${mod.csvRows.toLocaleString()} rows · we deduplicate on column 5 (<code>activity_name</code>) to get ${mod.journeys.length} distinct sub-journeys.</div>
+      <pre>awk -F',' 'NR>1 {print $5}' ${mod.sourceFile.split('/').pop()} | sort -u
+# → ${mod.journeys.length} distinct values</pre>
+    </div>
+
+    <div class="modal-section-title">${mod.journeys.length} sub-journeys</div>
+    <div class="drill-grid">
+      ${mod.journeys.map(j => `
+        <div class="drill-card ${j.built ? 'built' : ''}" data-drill-journey="${j.id}" data-drill-module="${moduleKey}">
+          <div class="dc-id">${j.id}</div>
+          <div class="dc-name">${j.name}</div>
+          <div class="dc-meta">${j.desc}</div>
+          <span class="dc-badge ${j.built ? 'built' : 'cata'}">${j.built ? '★ Built' : 'Catalogued'}</span>
+          <span class="dc-arrow">Click to drill →</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  showOtherView(body);
+  wireBreadcrumb();
+  document.querySelectorAll('.drill-card[data-drill-journey]').forEach(el => {
+    el.addEventListener('click', () => {
+      const jid = el.dataset.drillJourney;
+      const mkey = el.dataset.drillModule;
+      const j = MODULE_SUBJOURNEYS[mkey].journeys.find(x => x.id === jid);
+      pushDrill(j.name, renderJourneyDrill, mkey, jid);
+    });
+  });
+}
+
+// LEVEL 3 · Journey drill (show its steps)
+function renderJourneyDrill(moduleKey, journeyId) {
+  const mod = MODULE_SUBJOURNEYS[moduleKey];
+  const j = mod.journeys.find(x => x.id === journeyId);
+  modalTitle.textContent = `${j.name}`;
+  modalSub.textContent = `Layer 3 · a journey's business steps`;
+
+  let body = breadcrumbHtml();
+  body += `<button class="modal-back-btn" onclick="drillBack()">← back</button>`;
+
+  // Only Create Direct PO has the full 7-step synthesis
+  if (j.built && Array.isArray(STEPS_DATA) && STEPS_DATA.length > 0) {
+    body += `
+      <div class="modal-intro">
+        <b>${j.name}</b> is fully built. We compressed its 14 sub-screens and 222 raw UI tasks into <b>7 business steps</b> using the Phase 4 synthesis recipe.
+      </div>
+      <div class="source-callout on-cream">
+        <div class="sc-eyebrow">▼ Source · how these 7 steps were assembled</div>
+        <div class="sc-title">Phase 4 synthesis · multiple sources joined</div>
+        <div class="sc-paths">
+          <code>FSD step sheets</code> <span class="sc-arrow">→</span> granular action skeleton<br>
+          <code>Customer training docs (.pdf, .docx)</code> <span class="sc-arrow">→</span> natural-language phrasing<br>
+          <code>OLH topics</code> <span class="sc-arrow">→</span> product coverage / sub-flow optionality<br>
+          <code>Service_details_PO.csv</code> <span class="sc-arrow">→</span> ordered task list (sequenceno) + SP bindings<br>
+          <code>CreatePO3.0.json</code> <span class="sc-arrow">→</span> required-field floor + payload contract
+        </div>
+      </div>
+
+      <div class="modal-section-title">7 business steps</div>
+      <div class="modal-step-timeline">
+        ${STEPS_DATA.map(s => `
+          <div class="modal-step-card" data-drill-step="${s.id}">
+            <div class="modal-step-num">${s.num}</div>
+            <div class="modal-step-content">
+              <div class="step-name">${s.name}</div>
+              <div class="step-business">${s.business}</div>
+              <div class="step-quote">${escapeHtml(s.conversation)}</div>
+              <div class="step-counts"><span><b>${s.slots.length}</b> slot${s.slots.length===1?'':'s'}</span> · <span><b>${s.splices.length}</b> splice${s.splices.length===1?'':'s'}</span> · <span><b>${s.rules.length}</b> rule${s.rules.length===1?'':'s'}</span> &nbsp;<span style="color:var(--purple-deep);font-family:'JetBrains Mono',monospace;font-size:10px;">Click to drill →</span></div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else {
+    body += `
+      <div class="modal-intro">
+        <b>${j.name}</b> is catalogued but not yet built. It would be assembled by the same Phase 4 synthesis recipe that produced the 7 steps of Create Direct PO.
+      </div>
+      <div class="source-callout on-cream">
+        <div class="sc-eyebrow">▼ Source · what assembling this journey needs</div>
+        <div class="sc-title">Phase 4 synthesis · for <code>${j.id}</code></div>
+        <div class="sc-paths">
+          Filter <code>Service_details_${moduleKey === 'po' ? 'PO' : moduleKey.toUpperCase()}.csv</code> on activity_name = <code>${j.id}</code>, deduplicate, sort by (ui_name, task_name, sequenceno).<br>
+          Cross-reference FSD step sheets and training docs for the natural-language step boundaries.<br>
+          Produces a 5–10 step business flow (varies per journey complexity).
+        </div>
+      </div>
+
+      <div class="modal-intro" style="background: rgba(213, 209, 196, 0.4); margin-top: 18px;">
+        <b>Status: catalogued only.</b> Run the Phase 3 extractor on this journey to produce its facts file, then Phase 4 to synthesize the business steps. The recipe is the same — only Create Direct PO has been put through it so far.
+      </div>
+    `;
+  }
+
+  showOtherView(body);
+  wireBreadcrumb();
+
+  // Wire step drills (only for built journeys)
+  document.querySelectorAll('.modal-step-card[data-drill-step]').forEach(el => {
+    el.addEventListener('click', () => {
+      const stepId = el.dataset.drillStep;
+      const step = STEPS_DATA.find(s => s.id === stepId);
+      pushDrill('Step ' + step.num + ': ' + step.name, renderStepDrill, stepId);
+    });
+  });
+}
+
+// LEVEL 4 · Step drill (show its slots + splices + rules with sources)
+function renderStepDrill(stepId) {
+  const step = STEPS_DATA.find(s => s.id === stepId);
+  if (!step) return;
+  modalTitle.textContent = `Step ${step.num} · ${step.name}`;
+  modalSub.textContent = `Layer 4–6 · slots, splices, rules`;
+
+  let body = breadcrumbHtml();
+  body += `<button class="modal-back-btn" onclick="drillBack()">← back</button>`;
+  body += `
+    <div class="modal-intro">
+      <b>${step.business}</b>
+    </div>
+    <div class="vcard convo" style="margin-bottom: 18px;">
+      <div class="vlabel">What the bot might say</div>
+      <p>${escapeHtml(step.conversation)}</p>
+    </div>
+
+    <div class="three">
+      <div class="col slots-c">
+        <div class="col-head"><span class="ctitle">Slots collected</span><span class="count">${step.slots.length}</span></div>
+        <div>${step.slots.length ? step.slots.map(sl => `<span class="slot-tag" data-slot="${sl.id}">${sl.id}</span>`).join(' ') : '<div style="color:var(--muted-2); font-size:13px; font-style:italic;">No slots at this step.</div>'}</div>
+        <div class="source-callout on-cream" style="margin-top: 12px; padding: 10px 14px;">
+          <div class="sc-eyebrow" style="margin-bottom: 4px;">▼ Source</div>
+          <div style="font-size: 11px; color: var(--ink-2);"><code style="background:var(--white); padding:1px 5px; border-radius:3px; font-family:'JetBrains Mono', monospace; font-size:10px;">PO/API/CreatePO3.0.json</code> (required fields) + screen HTML (controls) + my slot model</div>
+        </div>
+      </div>
+      <div class="col splices-c">
+        <div class="col-head"><span class="ctitle">Splices that fire</span><span class="count">${step.splices.length}</span></div>
+        ${step.splices.map(sp => `
+          <div class="splice-card-inline">
+            <div class="sname">${sp.name}</div>
+            <div class="strigger">trigger: <code>${escapeHtml(sp.trigger)}</code></div>
+            <div class="seffect">${sp.effect}</div>
+            ${sp.activates && sp.activates.length ? `<div class="activates">${sp.activates.map(a => `<span class="slot-tag conditional">${a}</span>`).join(' ')}</div>` : ''}
+          </div>
+        `).join('')}
+        <div class="source-callout on-cream" style="margin-top: 12px; padding: 10px 14px;">
+          <div class="sc-eyebrow" style="margin-bottom: 4px;">▼ Source</div>
+          <div style="font-size: 11px; color: var(--ink-2);">SP scan of <b>1,219 PO SP files</b> → <b>7,344 branch facts</b> → filtered to splice-relevant columns (<code style="font-family:'JetBrains Mono', monospace; font-size:10px;">sp_scan_results.jsonl</code>)</div>
+        </div>
+      </div>
+      <div class="col rules-c">
+        <div class="col-head"><span class="ctitle">Business rules</span><span class="count">${step.rules.length}</span></div>
+        ${step.rules.length ? step.rules.map(r => `<div class="rule-card-inline"><div class="rname">${r.name}</div><div class="rstmt">${r.stmt}</div></div>`).join('') : '<div style="color:var(--muted-2); font-size:13px; font-style:italic;">No specific rules.</div>'}
+        <div class="source-callout on-cream" style="margin-top: 12px; padding: 10px 14px;">
+          <div class="sc-eyebrow" style="margin-bottom: 4px;">▼ Source</div>
+          <div style="font-size: 11px; color: var(--ink-2);">Training docs (rule statements) + SP validation citations (line-number anchors in <code style="font-family:'JetBrains Mono', monospace; font-size:10px;">po_common_aprchk_sp.sql</code>)</div>
+        </div>
+      </div>
+    </div>
+  `;
+  showOtherView(body);
+  wireBreadcrumb();
+  attachSlotHover();
+}
+
+// Wire up the P2P module dots on the page (LEVEL 1 → LEVEL 2)
+function wireP2PModuleClicks() {
+  document.querySelectorAll('.p2p-node[data-module]').forEach(el => {
+    el.addEventListener('click', () => {
+      const m = el.dataset.module;
+      const mod = MODULE_SUBJOURNEYS[m];
+      if (!mod) return;
+      startDrill(mod.name, renderModuleDrill, m);
+    });
+  });
+}
+// Run after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', wireP2PModuleClicks);
+} else {
+  wireP2PModuleClicks();
 }
 
 // Master Journey definitions for the 6 cards
