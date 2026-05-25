@@ -445,6 +445,284 @@
     color: var(--ink);
   }
 
+  /* The framework section (the big top-of-page conceptual view) */
+  .fw-section { padding: 64px 0 80px; }
+  .fw-section .fw-grid {
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px;
+    margin-top: 32px;
+  }
+  @media (max-width: 1000px) {
+    .fw-section .fw-grid { grid-template-columns: 1fr; }
+  }
+  .fw-col {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 26px 28px;
+  }
+  .fw-col .col-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--purple-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .fw-col h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .fw-col .col-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+  .fw-stack { display: flex; flex-direction: column; gap: 0; }
+  .fw-row {
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 12px 16px 14px;
+    background: var(--cream-light);
+    transition: all 0.15s;
+    position: relative;
+  }
+  .fw-row.clickable { cursor: pointer; }
+  .fw-row.clickable:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(22,22,19,0.06); }
+  .fw-row .row-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    color: var(--purple-deep);
+    text-transform: uppercase; letter-spacing: 0.07em;
+    margin-bottom: 4px;
+  }
+  .fw-row .row-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 17px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .fw-row .row-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .fw-row.l1 { background: linear-gradient(135deg, rgba(10, 63, 48, 0.95), rgba(26, 85, 68, 0.92)); border-color: var(--green); color: white; }
+  .fw-row.l1 .row-tag { color: rgba(255,255,255,0.65); }
+  .fw-row.l1 .row-name, .fw-row.l1 .row-desc { color: white; }
+  .fw-row.l1 .row-desc { color: rgba(217,230,224,0.85); }
+  .fw-row.l2 { background: rgba(176, 200, 224, 0.20); border-color: rgba(76, 120, 170, 0.35); }
+  .fw-row.l3 { background: rgba(197, 168, 240, 0.18); border-color: rgba(140, 100, 200, 0.32); }
+  .fw-row.l4 { background: rgba(86, 196, 184, 0.16); border-color: rgba(86, 156, 144, 0.32); }
+  .fw-row.l5 { background: rgba(182, 201, 148, 0.18); border-color: rgba(120, 150, 80, 0.32); }
+  .fw-row.l6 { background: rgba(240, 200, 150, 0.20); border-color: rgba(180, 130, 60, 0.32); }
+  .fw-row .click-chip {
+    position: absolute; top: 12px; right: 14px;
+    background: rgba(197, 168, 240, 0.55); color: var(--purple-deep);
+    padding: 3px 9px; border-radius: 100px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .fw-row.l1 .click-chip { background: rgba(255,255,255,0.22); color: var(--purple); }
+  .fw-arrow {
+    text-align: center; padding: 6px 0;
+    font-size: 11px; color: var(--muted-2);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .fw-arrow::before {
+    content: '';
+    display: block;
+    width: 1px; height: 12px;
+    background: var(--border);
+    margin: 0 auto 4px;
+  }
+  .fw-stack.reverse .fw-row.bu1 { background: linear-gradient(135deg, rgba(240, 200, 150, 0.28), rgba(248, 220, 180, 0.20)); border-color: rgba(180, 130, 60, 0.4); }
+  .fw-stack.reverse .fw-row.bu2 { background: rgba(182, 201, 148, 0.22); border-color: rgba(120, 150, 80, 0.4); }
+  .fw-stack.reverse .fw-row.bu3 { background: rgba(86, 196, 184, 0.20); border-color: rgba(86, 156, 144, 0.4); }
+  .fw-stack.reverse .fw-row.bu4 { background: rgba(176, 200, 224, 0.28); border-color: rgba(76, 120, 170, 0.4); }
+  .fw-stack.reverse .fw-row.bu5 { background: linear-gradient(135deg, rgba(10, 63, 48, 0.92), rgba(26, 85, 68, 0.85)); border-color: var(--green); color: white; }
+  .fw-stack.reverse .fw-row.bu5 .row-tag { color: rgba(255,255,255,0.65); }
+  .fw-stack.reverse .fw-row.bu5 .row-name, .fw-stack.reverse .fw-row.bu5 .row-desc { color: white; }
+  .fw-stack.reverse .fw-row.bu5 .row-desc { color: rgba(217,230,224,0.85); }
+
+  /* Master Journey aware retriever section */
+  .retriever-section {
+    margin-top: 38px;
+    background: linear-gradient(135deg, rgba(197, 168, 240, 0.10), rgba(86, 196, 184, 0.08));
+    border: 1px solid rgba(197, 168, 240, 0.30);
+    border-radius: 22px;
+    padding: 32px 36px;
+  }
+  .retriever-section h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 24px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .retriever-section h3 em { color: var(--purple-deep); font-style: italic; font-weight: 400; }
+  .retriever-section p.r-intro {
+    color: var(--muted); font-size: 14px; line-height: 1.65;
+    max-width: 720px; margin: 0 0 24px;
+  }
+  .retriever-diagram {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;
+    align-items: stretch;
+    margin: 22px 0;
+  }
+  @media (max-width: 900px) { .retriever-diagram { grid-template-columns: 1fr; } }
+  .r-card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex; flex-direction: column;
+  }
+  .r-card .r-step {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    color: var(--purple-deep);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .r-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 17px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .r-card p { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+  .r-card .qbox {
+    background: var(--cream-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 14px; color: var(--green);
+    border-left: 3px solid var(--green);
+    margin-top: 8px;
+  }
+  .r-card .module-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    margin: 2px 4px 2px 0;
+  }
+  .module-tag.pr  { background: rgba(176, 200, 224, 0.45); color: #2a4a6e; }
+  .module-tag.qtn { background: rgba(86, 196, 184, 0.30); color: #1a6a5e; }
+  .module-tag.po  { background: rgba(197, 168, 240, 0.40); color: var(--purple-deep); }
+  .module-tag.gr  { background: rgba(240, 200, 150, 0.40); color: #8b6020; }
+  .module-tag.sin { background: rgba(236, 184, 184, 0.45); color: #8b4040; }
+  .module-tag.ap  { background: rgba(213, 209, 196, 0.6); color: var(--muted); }
+  .r-edge-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin: 4px 0;
+  }
+
+  /* P2P lifecycle diagram for Master Journey modal */
+  .p2p-lifecycle {
+    display: flex; flex-direction: column; gap: 0;
+    margin: 16px 0;
+  }
+  .p2p-module-row {
+    display: grid; grid-template-columns: 100px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--border-soft);
+    background: var(--white);
+  }
+  .p2p-module-row + .p2p-module-row { margin-top: 6px; }
+  .p2p-module-row .p2p-mod-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 18px;
+    letter-spacing: -0.005em;
+  }
+  .p2p-module-row .p2p-mod-name .p2p-mod-sub {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--muted);
+    font-weight: normal; margin-top: 2px;
+  }
+  .p2p-statuses {
+    display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+  }
+  .p2p-status {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    padding: 4px 11px;
+    border-radius: 100px;
+    font-size: 11px;
+    color: var(--ink-2);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p2p-status.start { background: var(--white); }
+  .p2p-status.terminal { background: var(--green); color: white; border-color: var(--green); }
+  .p2p-step-arrow { color: var(--muted-2); font-size: 13px; }
+  .p2p-link-arrow {
+    text-align: center;
+    padding: 4px 0;
+    color: var(--purple-deep);
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p2p-link-arrow::before {
+    content: '';
+    display: block;
+    width: 1px; height: 14px;
+    background: var(--purple-mid);
+    margin: 0 auto 4px;
+  }
+  .p2p-row.pr  { border-left: 4px solid #b0c8e0; }
+  .p2p-row.qtn { border-left: 4px solid #98c4b8; }
+  .p2p-row.po  { border-left: 4px solid var(--purple-mid); }
+  .p2p-row.gr  { border-left: 4px solid var(--peach); }
+  .p2p-row.sin { border-left: 4px solid var(--rose); }
+  .p2p-row.ap  { border-left: 4px solid var(--muted-2); border-style: dashed; }
+
+  /* Module router visualization for popup */
+  .mr-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 16px; }
+  @media (max-width: 800px) { .mr-grid { grid-template-columns: 1fr 1fr; } }
+  .mr-card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .mr-card .mr-mod {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 17px;
+    letter-spacing: -0.005em;
+    margin-bottom: 4px;
+  }
+  .mr-card .mr-mod.pr  { color: #2a4a6e; }
+  .mr-card .mr-mod.qtn { color: #1a6a5e; }
+  .mr-card .mr-mod.po  { color: var(--purple-deep); }
+  .mr-card .mr-mod.gr  { color: #8b6020; }
+  .mr-card .mr-mod.sin { color: #8b4040; }
+  .mr-card .mr-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .mr-card .mr-triggers {
+    font-size: 12px; color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .mr-card .mr-triggers em {
+    color: var(--green); font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
   /* Clickable hbox layer */
   .hbox-clickable {
     cursor: pointer;
@@ -1595,6 +1873,147 @@
     <div class="hero-actions">
       <a href="#live" class="btn-primary">See a real conversation →</a>
       <a href="#how-we-built" class="btn-secondary">How we built it</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE FRAMEWORK · master journey aware retrieval -->
+<section class="fw-section">
+  <div class="container">
+    <div class="eyebrow-sm" style="text-align: center; display: block;">The full framework</div>
+    <h2 style="text-align: center; margin: 0 auto 14px;">Six layers — and the <em>Master Journey Aware</em> retriever that walks them.</h2>
+    <p class="intro" style="text-align: center; margin: 0 auto 0;">A user question rarely lives inside one module. "My PR was approved, where's the PO?" spans two. "Why hasn't this invoice been paid?" can span four. The framework has to <em>think across modules</em> — which is why the topmost layer is the <b>Master Journey</b> (the business process), not a single module's graph.</p>
+
+    <div class="fw-grid">
+
+      <!-- TOP-DOWN -->
+      <div class="fw-col">
+        <div class="col-eyebrow">▼ Top-down · runtime view</div>
+        <h3>How the assistant processes a question</h3>
+        <p class="col-sub">From the user's first message down to the SP call.</p>
+
+        <div class="fw-stack">
+          <div class="fw-row l1 clickable" data-fwlayer="master_journey">
+            <span class="click-chip">Click →</span>
+            <div class="row-tag">Layer 1 · cross-module</div>
+            <div class="row-name">Master Journey</div>
+            <div class="row-desc">Procure-to-Pay · Order-to-Cash · Internal Logistics · System Setup · Asset Maintenance · Cross-Module (6 total). Each is a business process spanning multiple modules.</div>
+          </div>
+          <div class="fw-arrow">classifies into ↓</div>
+          <div class="fw-row l2 clickable" data-fwlayer="module_router">
+            <span class="click-chip">Click →</span>
+            <div class="row-tag">Layer 2 · within the master</div>
+            <div class="row-name">Module Router</div>
+            <div class="row-desc">For P2P: which of PR, Pur_Qtn, PO, GR, SIN, AP does this question belong to? Multi-module questions activate multiple at once.</div>
+          </div>
+          <div class="fw-arrow">selects a module ↓</div>
+          <div class="fw-row l3 clickable" data-fwlayer="graph">
+            <span class="click-chip">Click →</span>
+            <div class="row-tag">Layer 3 · module-specific</div>
+            <div class="row-name">Module Knowledge Graph</div>
+            <div class="row-desc">e.g. the PO graph: 154 nodes · 554 edges. One per module; only the PO one is fully built so far.</div>
+          </div>
+          <div class="fw-arrow">picks a journey ↓</div>
+          <div class="fw-row l4 clickable" data-fwlayer="journeys">
+            <span class="click-chip">Click →</span>
+            <div class="row-tag">Layer 4 · per-module journeys</div>
+            <div class="row-name">Module Journeys</div>
+            <div class="row-desc">e.g. 13 PO journeys (Create Direct, Edit, Amend, Approve, …). 8 PR · 10 Qtn · ~25 GR · ~15 SIN.</div>
+          </div>
+          <div class="fw-arrow">advances through ↓</div>
+          <div class="fw-row l5 clickable" data-fwlayer="steps">
+            <span class="click-chip">Click →</span>
+            <div class="row-tag">Layer 5 · conversation flow</div>
+            <div class="row-name">Business Steps</div>
+            <div class="row-desc">~7 ordered steps per journey. Drives what the bot asks next.</div>
+          </div>
+          <div class="fw-arrow">filled by ↓</div>
+          <div class="fw-row l6 clickable" data-fwlayer="slots">
+            <span class="click-chip">Click →</span>
+            <div class="row-tag">Layer 6 · atoms</div>
+            <div class="row-name">Slots + Splices</div>
+            <div class="row-desc">49 slots (inputs the chat collects) · 27 splices (the if-then logic that fires on slot fill).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM-UP -->
+      <div class="fw-col">
+        <div class="col-eyebrow">▲ Bottom-up · construction order</div>
+        <h3>How we built the framework</h3>
+        <p class="col-sub">Start from the raw Ramco artifacts. Layer up.</p>
+
+        <div class="fw-stack reverse">
+          <div class="fw-row bu1">
+            <div class="row-tag">Build step 1 · the spine</div>
+            <div class="row-name">Read the Service Catalog</div>
+            <div class="row-desc"><code style="background:var(--white); padding:1px 5px; border-radius:3px; font-family:'JetBrains Mono', monospace; font-size:11px;">Service_details_*.csv</code> — one per module. Column 5 (<code style="font-family:'JetBrains Mono', monospace; font-size:11px;">activity_name</code>) lists every journey, tagged with its screen, task, method, SP. This is the foundation of everything.</div>
+          </div>
+          <div class="fw-arrow">groups into ↓</div>
+          <div class="fw-row bu2">
+            <div class="row-tag">Build step 2 · per module</div>
+            <div class="row-name">Extract Module Journeys</div>
+            <div class="row-desc">Distinct activity_name values per module: 13 PO · 8 PR · 10 Qtn · ~25 GR · ~15 SIN. <b>This is where the journey names come from — not invented, discovered.</b></div>
+          </div>
+          <div class="fw-arrow">enrich with ↓</div>
+          <div class="fw-row bu3">
+            <div class="row-tag">Build step 3 · steps + atoms</div>
+            <div class="row-name">Synthesize Steps · Slots · Splices</div>
+            <div class="row-desc">Compress 14 screens into 7 business steps. Pull slot definitions from API specs + screen HTML. Mine splices from 1,219 SP files (7,344 branch facts).</div>
+          </div>
+          <div class="fw-arrow">cluster into ↓</div>
+          <div class="fw-row bu4">
+            <div class="row-tag">Build step 4 · the modules</div>
+            <div class="row-name">Wrap into Module Knowledge Graphs</div>
+            <div class="row-desc">For each module, group its journeys + steps + slots + splices into one queryable graph. PO has 154 nodes and 554 edges.</div>
+          </div>
+          <div class="fw-arrow">connect via lifecycle ↓</div>
+          <div class="fw-row bu5">
+            <div class="row-tag">Build step 5 · the top</div>
+            <div class="row-name">Link the Master Journey</div>
+            <div class="row-desc">Connect the 5 module graphs along the P2P lifecycle. Edges come from cross-module activities like <code style="background:rgba(255,255,255,0.15); padding:1px 5px; border-radius:3px;">create_po_from_pr</code> and reference-doc patterns. <b>Only after this step can the retriever answer cross-module questions.</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE RETRIEVER -->
+    <div class="retriever-section">
+      <div class="col-eyebrow" style="margin-bottom: 6px;">▼ The runtime brain</div>
+      <h3>The <em>Master-Journey-Aware</em> Retriever</h3>
+      <p class="r-intro">It's the Phase 9 retriever, generalised. Instead of returning a subgraph from one module, it walks across module boundaries when the user's question crosses them — assembling a packet that contains nodes from each module it touched and the lifecycle edges between them. The LLM then writes one coherent answer that follows the chain.</p>
+
+      <div class="retriever-diagram">
+        <div class="r-card">
+          <span class="r-step">Step 1 · the question</span>
+          <h4>User asks a multi-module question</h4>
+          <p>Real users don't think in modules. They ask things that span the chain.</p>
+          <div class="qbox">"My PR was approved last week, where's the PO? And did the goods arrive yet?"</div>
+        </div>
+        <div class="r-card">
+          <span class="r-step">Step 2 · master + modules</span>
+          <h4>Classify, then identify touched modules</h4>
+          <p>The retriever first classifies the master journey, then enumerates every module the question references.</p>
+          <p style="margin-top:10px;"><b>Master:</b> &nbsp;<span class="module-tag" style="background:rgba(10,63,48,0.12); color:var(--green);">P2P</span></p>
+          <p style="margin-top:8px;"><b>Modules touched:</b><br>
+            <span class="module-tag pr">PR</span>
+            <span class="module-tag po">PO</span>
+            <span class="module-tag gr">GR</span>
+          </p>
+        </div>
+        <div class="r-card">
+          <span class="r-step">Step 3 · assemble subgraph</span>
+          <h4>Walk the cross-module edges</h4>
+          <p>Pull the relevant nodes from each module, then add the lifecycle edges that connect them.</p>
+          <div class="r-edge-label">PR.Approved <span style="color:var(--purple-deep);">──▶</span> PO.Draft</div>
+          <div class="r-edge-label">PO.Authorized <span style="color:var(--purple-deep);">──▶</span> GR.Created</div>
+          <p style="margin-top:6px;">Resulting packet → ~12 graph nodes (across 3 modules) + 2 cross-module edges + evidence summaries. Compact, focused, multi-module.</p>
+        </div>
+      </div>
+
+      <p style="font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 800px;">
+        Click the <b>Master Journey</b> box above to see the full P2P lifecycle graph that the retriever walks. Click <b>Module Router</b> to see how it decides which module a question belongs to.
+      </p>
     </div>
   </div>
 </section>
@@ -2824,21 +3243,179 @@ function renderGraphModal() {
   showGraphView();
 }
 
+function renderMasterJourneyModal() {
+  modalTitle.textContent = 'The P2P Master Journey';
+  modalSub.textContent = 'cross-module lifecycle · the graph the retriever walks';
+  const html = `
+    <div class="modal-intro">A <b>Master Journey</b> is a business process that spans multiple modules. Procure-to-Pay flows PR → Pur_Qtn → PO → GR → SIN → AP. Each module produces statuses that become preconditions for the next module's create journey. The arrows between modules are the <em>cross-module edges</em> the retriever walks.</div>
+    <div class="p2p-lifecycle">
+
+      <div class="p2p-module-row p2p-row pr">
+        <div class="p2p-mod-name">Purchase Request<span class="p2p-mod-sub">module · Pur_Req · 8 journeys</span></div>
+        <div class="p2p-statuses">
+          <span class="p2p-status start">Created</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Under Auth</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status terminal">Approved</span>
+        </div>
+      </div>
+      <div class="p2p-link-arrow">↓ PR.Approved becomes a precondition for PO.Draft (via create_po_from_pr)</div>
+
+      <div class="p2p-module-row p2p-row qtn">
+        <div class="p2p-mod-name">Quotation / RFQ<span class="p2p-mod-sub">module · Pur_Qtn · 10 journeys</span></div>
+        <div class="p2p-statuses">
+          <span class="p2p-status start">RFQ Created</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Quote Received</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status terminal">Authorized</span>
+        </div>
+      </div>
+      <div class="p2p-link-arrow">↓ Qtn.Authorized becomes a precondition for PO.Draft (via create_po_from_quotation)</div>
+
+      <div class="p2p-module-row p2p-row po">
+        <div class="p2p-mod-name">Purchase Order<span class="p2p-mod-sub">module · PO · 13 journeys · fully built ★</span></div>
+        <div class="p2p-statuses">
+          <span class="p2p-status start">Draft</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Under Auth</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status terminal">Authorized</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Amended</span>
+        </div>
+      </div>
+      <div class="p2p-link-arrow">↓ PO.Authorized becomes a precondition for GR (PO is the reference doc)</div>
+
+      <div class="p2p-module-row p2p-row gr">
+        <div class="p2p-mod-name">Goods Receipt<span class="p2p-mod-sub">module · GR · ~25 journeys</span></div>
+        <div class="p2p-statuses">
+          <span class="p2p-status start">Created</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Inspection</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Movement</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status terminal">Accepted</span>
+        </div>
+      </div>
+      <div class="p2p-link-arrow">↓ GR.Accepted becomes matchable evidence for SIN (via SinMthInv)</div>
+
+      <div class="p2p-module-row p2p-row sin">
+        <div class="p2p-mod-name">Supplier Invoice<span class="p2p-mod-sub">module · SIN · ~15 journeys</span></div>
+        <div class="p2p-statuses">
+          <span class="p2p-status start">Created</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status">Matched</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status terminal">Authorized</span>
+        </div>
+      </div>
+      <div class="p2p-link-arrow">↓ SIN.Authorized hands off to AP for payment</div>
+
+      <div class="p2p-module-row p2p-row ap">
+        <div class="p2p-mod-name">Accounts Payable<span class="p2p-mod-sub">module · AP · CSV not yet ingested</span></div>
+        <div class="p2p-statuses">
+          <span class="p2p-status start">Payable</span>
+          <span class="p2p-step-arrow">→</span>
+          <span class="p2p-status terminal">Paid</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-intro" style="margin-top: 22px;">
+      <b>Why these edges matter to the chat:</b> a user asking <em>"My PR was approved, where's the PO?"</em> needs the retriever to walk the PR.Approved → PO.Draft edge to pull both modules' context. A user asking <em>"Why hasn't this invoice been paid?"</em> walks SIN → AP. Without these edges, the chat would treat every module as an island and lose the user's actual workflow.
+    </div>
+  `;
+  showOtherView(html);
+}
+
+function renderModuleRouterModal() {
+  modalTitle.textContent = 'The Module Router';
+  modalSub.textContent = 'within a Master Journey, classify the question into module(s)';
+  const html = `
+    <div class="modal-intro">Once the Master Journey is identified (e.g. <b>P2P</b>), the Module Router classifies the user's question into the module(s) it actually touches. Single-module questions hit one card. Multi-module questions hit several at once — the retriever then walks across them.</div>
+
+    <div class="modal-section-title">Modules in P2P (5 catalogued, 1 still to ingest)</div>
+    <div class="mr-grid">
+      <div class="mr-card">
+        <div class="mr-mod pr">Purchase Request</div>
+        <div class="mr-tag">PR · 8 journeys · Service_details_PUR_REQ.csv</div>
+        <div class="mr-triggers">Triggered by: <em>"raise a request", "approve PR", "convert PR to PO", "short close PR"</em></div>
+      </div>
+      <div class="mr-card">
+        <div class="mr-mod qtn">Quotation / RFQ</div>
+        <div class="mr-tag">Pur_Qtn · 10 journeys · Service_details_PUR_QTN.csv</div>
+        <div class="mr-triggers">Triggered by: <em>"send RFQ", "compare quotes", "authorize quotation"</em></div>
+      </div>
+      <div class="mr-card">
+        <div class="mr-mod po">Purchase Order ★</div>
+        <div class="mr-tag">PO · 13 journeys · fully built</div>
+        <div class="mr-triggers">Triggered by: <em>"create a PO", "amend PO", "approve PO", "where's my PO"</em></div>
+      </div>
+      <div class="mr-card">
+        <div class="mr-mod gr">Goods Receipt</div>
+        <div class="mr-tag">GR · ~25 journeys · Service_details_GR.csv</div>
+        <div class="mr-triggers">Triggered by: <em>"receive goods", "inspect", "return to supplier", "cargo clearance"</em></div>
+      </div>
+      <div class="mr-card">
+        <div class="mr-mod sin">Supplier Invoice</div>
+        <div class="mr-tag">SIN · ~15 journeys · Service_details_SIN.csv</div>
+        <div class="mr-triggers">Triggered by: <em>"create invoice", "match invoice", "supplier billing"</em></div>
+      </div>
+      <div class="mr-card" style="opacity:0.55; border-style:dashed;">
+        <div class="mr-mod" style="color:var(--muted-2);">Accounts Payable</div>
+        <div class="mr-tag">AP · CSV not yet ingested</div>
+        <div class="mr-triggers">Triggered by: <em>"pay supplier", "process payment", "supplier balance"</em></div>
+      </div>
+    </div>
+
+    <div class="modal-section-title">How multi-module questions get classified</div>
+    <div style="background: var(--cream-light); border-radius: 12px; padding: 18px 22px;">
+      <div style="margin-bottom: 14px;">
+        <div style="font-family:'Fraunces',serif;font-style:italic;color:var(--green);font-size:14px;margin-bottom:6px;">"My PR was approved, where's the PO?"</div>
+        <div style="font-size:12px;color:var(--muted-2);">→ Modules: <span class="module-tag pr">PR</span> + <span class="module-tag po">PO</span>. Retriever pulls PR.Approved view + PO.Draft search + the create_po_from_pr edge.</div>
+      </div>
+      <div style="margin-bottom: 14px;">
+        <div style="font-family:'Fraunces',serif;font-style:italic;color:var(--green);font-size:14px;margin-bottom:6px;">"Goods arrived but invoice doesn't match"</div>
+        <div style="font-size:12px;color:var(--muted-2);">→ Modules: <span class="module-tag gr">GR</span> + <span class="module-tag sin">SIN</span>. Retriever pulls GR.Accepted view + SIN matching logic + the SinMthInv edge.</div>
+      </div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-style:italic;color:var(--green);font-size:14px;margin-bottom:6px;">"Why hasn't this PO been paid yet?"</div>
+        <div style="font-size:12px;color:var(--muted-2);">→ Modules: <span class="module-tag po">PO</span> + <span class="module-tag gr">GR</span> + <span class="module-tag sin">SIN</span> + <span class="module-tag ap">AP</span>. The whole downstream chain — retriever walks all four lifecycle edges.</div>
+      </div>
+    </div>
+  `;
+  showOtherView(html);
+}
+
 function openLayerModal(layer) {
-  if (layer === 'graph')         renderGraphModal();
-  else if (layer === 'journeys') renderJourneysModal();
-  else if (layer === 'steps')    renderStepsModal();
-  else if (layer === 'slots')    renderSlotsModal();
-  else if (layer === 'splices')  renderSplicesModal();
+  if (layer === 'master_journey')      renderMasterJourneyModal();
+  else if (layer === 'module_router')  renderModuleRouterModal();
+  else if (layer === 'graph')          renderGraphModal();
+  else if (layer === 'journeys')       renderJourneysModal();
+  else if (layer === 'steps')          renderStepsModal();
+  else if (layer === 'slots')          renderSlotsModal();
+  else if (layer === 'splices')        renderSplicesModal();
   openMasterModal();
   // Scroll modal body to top
   document.getElementById('modal-body').scrollTop = 0;
 }
 
-// Wire up clickable hbox layers
+// Wire up clickable hbox layers (existing PO-module 4-layer hierarchy)
 document.querySelectorAll('.hbox-clickable').forEach(el => {
   el.addEventListener('click', () => {
     const layer = el.dataset.layer;
+    if (layer) openLayerModal(layer);
+  });
+});
+
+// Wire up clickable fw-row layers (new 6-layer framework view at top)
+document.querySelectorAll('.fw-row.clickable').forEach(el => {
+  el.addEventListener('click', () => {
+    const layer = el.dataset.fwlayer;
     if (layer) openLayerModal(layer);
   });
 });
